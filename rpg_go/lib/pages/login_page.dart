@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
                 color: Colors.yellow,
               ),
               SizedBox(height: 50),
-              Text('Bem vindo ao RPG:Go',
+              Text('Bem vindo ao RPG:Go login:',
                   style: TextStyle(
                       color: Colors.white, fontSize: 30, fontFamily: 'Revol')),
               SizedBox(height: 50),
