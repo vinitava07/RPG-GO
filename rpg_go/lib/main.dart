@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/login_page.dart';
 
 void main() {
@@ -10,9 +11,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+    return MaterialApp(
+      // debugShowCheckedModeBanner: false,
+      home: HomeRevival(null),
     );
   }
 }
