@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
+import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
 
 class HomeRevival extends StatelessWidget {
-  List<RoomTile>? salas = null;
+  List<RoomTile>? salas;
   HomeRevival(List<RoomTile>? s, {super.key});
 
   @override
@@ -17,11 +18,16 @@ class HomeRevival extends StatelessWidget {
               RoomHeader("Minhas Salas"),
               Expanded(
                 child: ListView(
+                  
                   children: [
                     RoomTile(
                       "Nome da Sala",
                       "Jogador",
                     ),
+                    RoomTile("nome", "situ"),
+                    RoomTile("nome", "situ"),
+                    RoomTile("nome", "situ"),
+                    RoomTile("nome", "situ"),
                     RoomTile("nome", "situ"),
                   ],
                 ),
@@ -32,21 +38,11 @@ class HomeRevival extends StatelessWidget {
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 3),
-            borderRadius: BorderRadius.circular(100)),
-        child: const Icon(
-          Icons.add,
-          size: 40,
-        ),
-      ),
-      bottomNavigationBar: SizedBox(width: 50, child: BottomNavBar()),
+      floatingActionButton: FloatMasterButton(),
+      bottomNavigationBar: const SizedBox(width: 50, child: BottomNavBar()),
     );
   }
 
-  @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
     throw UnimplementedError();

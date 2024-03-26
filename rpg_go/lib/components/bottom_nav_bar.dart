@@ -11,6 +11,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color mainColor = Color.fromRGBO(0, 75, 91, 1);
     return BottomAppBar(
       height: 70,
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -22,7 +23,7 @@ class BottomNavBar extends StatelessWidget {
           ),
         ),
       ),
-      color: Colors.blue,
+      color: Colors.black,
       child: IconTheme(
         data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
         child: Padding(
