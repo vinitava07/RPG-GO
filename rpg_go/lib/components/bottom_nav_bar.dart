@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/home_revival.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -32,7 +33,27 @@ class BottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    const newRouteName = "/home_revival";
+                    bool isNewRouteSameAsCurrent = false;
+                    print(ModalRoute.of(context)?.settings.name);
+                    if (ModalRoute.of(context)?.settings.name == newRouteName) {
+                      isNewRouteSameAsCurrent = true;
+                    }
+                    // Navigator.popUntil(context, (route) {
+                    //   if (route.settings.name == newRouteName) {
+                    //     isNewRouteSameAsCurrent = true;
+                    //   }
+                    //   return true;
+                    // });
+
+                    if (!isNewRouteSameAsCurrent) {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/home_revival', ((route) {
+                        return route.settings.name == newRouteName;
+                      }));
+                    }
+                  },
                   icon: const Icon(
                     Icons.home,
                     size: 40,

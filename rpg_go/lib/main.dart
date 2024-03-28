@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/login_page.dart';
+import 'package:rpg_go/pages/master_room.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       home: HomeRevival(null),
+      routes: {
+        '/home_revival': (context) => HomeRevival(null),
+        '/master_room': (context) => MasterRoom(),
+      },
     );
   }
 }

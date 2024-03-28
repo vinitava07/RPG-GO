@@ -1,36 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:popover/popover.dart';
 import 'package:rpg_go/pages/master_room.dart';
 
 class FloatMasterButton extends StatelessWidget {
   FloatMasterButton({super.key});
-  Color mainColor = Color.fromRGBO(0, 75, 91, 1);
+  Color mainColor = const Color.fromRGBO(0, 75, 91, 1);
 
-  final _overlayController = OverlayPortalController();
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       backgroundColor: mainColor,
-      onPressed: _overlayController.toggle,
-      shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.white),
-          borderRadius: BorderRadius.circular(100)),
-      child: OverlayPortal(
-        controller: _overlayController,
-        overlayChildBuilder: (BuildContext context) {
-          return Positioned(
-            bottom: 120,
-            left: MediaQuery.of(context).size.width * 0.1,
-            right: MediaQuery.of(context).size.width * 0.1,
-            child: Container(
-              padding: const EdgeInsets.only(
-                bottom: 20,
-              ),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color.fromRGBO(59, 66, 68, 1),
-              ),
-              child: Column(
+      onPressed: () => showPopover(
+          width: 300,
+          height: 150,
+          context: context,
+          backgroundColor: mainColor,
+          bodyBuilder: (context) => Column(
                 children: [
                   const Text(
                     "EU SOU:",
@@ -42,7 +28,7 @@ class FloatMasterButton extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blueGrey,
+                              backgroundColor: Colors.deepPurple,
                               padding: EdgeInsets.all(20),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12))),
@@ -74,7 +60,7 @@ class FloatMasterButton extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purple,
+                            backgroundColor: Colors.blueGrey,
                             padding: EdgeInsets.all(20),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12))),
@@ -100,15 +86,14 @@ class FloatMasterButton extends StatelessWidget {
                     ],
                   ),
                 ],
-              ),
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.add,
-          size: 40,
-          color: Colors.white,
-        ),
+              )),
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(100)),
+      child: const Icon(
+        Icons.add,
+        size: 40,
+        color: Colors.white,
       ),
     );
   }

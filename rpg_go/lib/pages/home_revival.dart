@@ -11,6 +11,7 @@ class HomeRevival extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -18,7 +19,6 @@ class HomeRevival extends StatelessWidget {
               RoomHeader("Minhas Salas"),
               Expanded(
                 child: ListView(
-                  
                   children: [
                     RoomTile(
                       "Nome da Sala",
