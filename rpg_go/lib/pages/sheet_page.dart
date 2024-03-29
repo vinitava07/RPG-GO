@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rpg_go/components/sheet_head.dart';
 import 'package:rpg_go/components/sheet_stats.dart';
 import 'package:rpg_go/components/sheet_attributes.dart';
+import 'package:rpg_go/components/sheet_options.dart';
 
 class SheetPage extends StatelessWidget {
   const SheetPage({super.key});
@@ -35,7 +36,7 @@ class SheetPage extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 width: 370,
-                height: 90,
+                height: 80,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(20), // raio dos cantos
@@ -53,7 +54,7 @@ class SheetPage extends StatelessWidget {
               const SizedBox(height: 20),
               Container(
                 width: 370,
-                height: 160,
+                height: 170,
                 decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.circular(20), // raio dos cantos
@@ -70,20 +71,22 @@ class SheetPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Container(
-                  width: 370,
-                  height: 290,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(20), // raio dos cantos
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5), // cor da sombra
-                        spreadRadius: 1, // raio de espalhamento
-                        blurRadius: 0.5, // raio de desfoque
-                        offset: const Offset(0, 1), // deslocamento da sombra
-                      ),
-                    ],
-                  )),
+                width: 370,
+                height: 290,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20), // raio dos cantos
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5), // cor da sombra
+                      spreadRadius: 1, // raio de espalhamento
+                      blurRadius: 0.5, // raio de desfoque
+                      offset: const Offset(0, 1), // deslocamento da sombra
+                    ),
+                  ],
+                ),
+                child: const Center(child: SheetOptions(),)
+              ),
             ],
           )),
         )));

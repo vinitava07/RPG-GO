@@ -8,24 +8,29 @@ class SheetAttributes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: [  
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Container(
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("STR",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("9(-1)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),
@@ -34,15 +39,20 @@ class SheetAttributes extends StatelessWidget {
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("INT",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("15(+2)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),
@@ -52,20 +62,25 @@ class SheetAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Container(
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("DEX",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("12(+1)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),
@@ -74,15 +89,20 @@ class SheetAttributes extends StatelessWidget {
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("WIS",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                Text("WIS",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("12(+1)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),
@@ -92,20 +112,25 @@ class SheetAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Container(
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("CON",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("11(0)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),
@@ -114,15 +139,20 @@ class SheetAttributes extends StatelessWidget {
               width: 80,
               height: 60,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 159, 151, 151),
+                color: const Color.fromRGBO(35, 37, 38, 1),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("CHA",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 17, color: Colors.white))),
+                Text("15(+2)",
+                style: GoogleFonts.almendra(
+                    textStyle:
+                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
                 ],
               ),
             ),

@@ -18,11 +18,11 @@ class SheetStats extends StatelessWidget {
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
             Text(
-              "17",
+              "16",
               style: GoogleFonts.almendra(
                   textStyle: GoogleFonts.almendra(
                       textStyle: const TextStyle(
-                          fontSize: 40, color: Colors.white, height: 0.5))),
+                          fontSize: 40, color: Colors.white, height: 0.7))),
             ),
           ],
         ),

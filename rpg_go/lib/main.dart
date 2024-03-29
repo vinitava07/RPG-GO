@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:rpg_go/pages/login_page.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
 
 void main() {
