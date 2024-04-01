@@ -11,7 +11,7 @@ class HomeRevival extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -39,7 +39,7 @@ class HomeRevival extends StatelessWidget {
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatMasterButton(),
-      bottomNavigationBar: const SizedBox(width: 50, child: BottomNavBar()),
+      bottomNavigationBar: const SizedBox(width: 50, child: BottomNavBar(),),
     );
   }
 

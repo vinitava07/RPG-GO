@@ -61,11 +61,12 @@ flutter:
   assets:
    - assets/images/google_login_icon.png
    - assets/sheet_icons/
+   - assets/images/
   #   - images/a_dot_ham.jpeg
   fonts:
    - family: Revol
      fonts:
-         - asset: assets/fonts/ProtestRevolution-Regular.ttf
+         - asset: assets/fonts/Almendra-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

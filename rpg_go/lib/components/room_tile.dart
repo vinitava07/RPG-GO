@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/sheet_page.dart';
 
 class RoomTile extends StatelessWidget {
   String nomeSala = "";
@@ -25,7 +26,10 @@ class RoomTile extends StatelessWidget {
               TextStyle(fontSize: 20, fontFamily: 'Revol', color: Colors.white),
         ),
         dense: false,
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SheetPage()));
+        },
         contentPadding: EdgeInsets.all(30),
         trailing: Text(
           situacao,
