@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
       routes: {
-        '/home_revival': (context) => HomeRevival(null),
-        '/master_room': (context) => MasterRoom(),
+        '/home_revival': (context) => const HomeRevival(null),
+        '/master_room': (context) => const MasterRoom(),
       },
     );
   }

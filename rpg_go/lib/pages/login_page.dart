@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomeRevival(null)));
+                              builder: (context) => const HomeRevival(null)));
                     },
                     child: const Text('Entrar', style: TextStyle(color: Colors.black))),
               ],
