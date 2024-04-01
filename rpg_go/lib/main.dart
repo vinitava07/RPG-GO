@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/home_revival.dart';
+import 'package:rpg_go/pages/login_page.dart';
+import 'package:rpg_go/pages/master_room.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
 
 void main() {
@@ -10,9 +13,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SheetPage(),
+      home: HomeRevival(null),
+      routes: {
+        '/home_revival': (context) => HomeRevival(null),
+        '/master_room': (context) => MasterRoom(),
+      },
     );
   }
 }
