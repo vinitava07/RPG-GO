@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rpg_go/pages/home_revival.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -12,7 +11,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color mainColor = Color.fromRGBO(0, 75, 91, 1);
+    Color mainColor = const Color.fromRGBO(0, 75, 91, 1);
     return BottomAppBar(
       height: 70,
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -36,7 +35,7 @@ class BottomNavBar extends StatelessWidget {
                   onPressed: () {
                     const newRouteName = "/home_revival";
                     bool isNewRouteSameAsCurrent = false;
-                    print(ModalRoute.of(context)?.settings.name);
+                    //print(ModalRoute.of(context)?.settings.name);
                     if (ModalRoute.of(context)?.settings.name == newRouteName) {
                       isNewRouteSameAsCurrent = true;
                     }

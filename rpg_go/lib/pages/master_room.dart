@@ -4,7 +4,7 @@ import 'package:rpg_go/components/player_tile.dart';
 import 'package:rpg_go/components/room_header.dart';
 
 class MasterRoom extends StatelessWidget {
-  MasterRoom({super.key});
+  const MasterRoom({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +34,17 @@ class MasterRoom extends StatelessWidget {
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: MasterRoomButton(),
-      bottomNavigationBar: BottomNavBar(),
+      floatingActionButton: masterRoomButton(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
-  FloatingActionButton MasterRoomButton() {
+  FloatingActionButton masterRoomButton() {
     return FloatingActionButton(
       onPressed: () {
-        print("oi");
+        //print("oi");
       },
-      backgroundColor: Color.fromRGBO(0, 75, 91, 1),
+      backgroundColor: const Color.fromRGBO(0, 75, 91, 1),
       shape: RoundedRectangleBorder(
           side: const BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(100)),

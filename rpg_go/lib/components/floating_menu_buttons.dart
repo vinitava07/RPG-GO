@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:popover/popover.dart';
-import 'package:rpg_go/pages/master_room.dart';
+//import 'package:rpg_go/pages/master_room.dart';
+import 'package:rpg_go/pages/room_creation.dart';
 
-class FloatMasterButton extends StatelessWidget {
-  FloatMasterButton({super.key});
+class FloatMasterButton extends StatefulWidget {
+  const FloatMasterButton({super.key});
+
+  @override
+  State<FloatMasterButton> createState() => _FloatMasterButtonState();
+}
+
+class _FloatMasterButtonState extends State<FloatMasterButton> {
   Color mainColor = const Color.fromRGBO(0, 75, 91, 1);
 
   @override
@@ -29,15 +35,14 @@ class FloatMasterButton extends StatelessWidget {
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.deepPurple,
-                              padding: EdgeInsets.all(20),
+                              padding: const EdgeInsets.all(20),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12))),
                           onPressed: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => MasterRoom()));
-                            ;
+                                    builder: (context) => const RoomCreation()));
                           },
                           child: const Column(
                             children: [
@@ -61,7 +66,7 @@ class FloatMasterButton extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blueGrey,
-                            padding: EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(20),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12))),
                         child: const Column(
@@ -88,7 +93,7 @@ class FloatMasterButton extends StatelessWidget {
                 ],
               )),
       shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.white),
+          side: const BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(100)),
       child: const Icon(
         Icons.add,
@@ -96,11 +101,5 @@ class FloatMasterButton extends StatelessWidget {
         color: Colors.white,
       ),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

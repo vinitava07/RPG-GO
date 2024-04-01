@@ -4,10 +4,17 @@ import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
 
-class HomeRevival extends StatelessWidget {
-  List<RoomTile>? salas;
-  HomeRevival(List<RoomTile>? s, {super.key});
+class HomeRevival extends StatefulWidget {
+  final List<RoomTile>? salas;
+  const HomeRevival(List<RoomTile>? s, {super.key})
+  : salas = s
+  ;
 
+  @override
+  State<HomeRevival> createState() => _HomeRevivalState();
+}
+
+class _HomeRevivalState extends State<HomeRevival> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +23,10 @@ class HomeRevival extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              RoomHeader("Minhas Salas"),
+              const RoomHeader("Minhas Salas"),
               Expanded(
                 child: ListView(
-                  children: [
+                  children: const [
                     RoomTile(
                       "Nome da Sala",
                       "Jogador",
@@ -38,13 +45,8 @@ class HomeRevival extends StatelessWidget {
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatMasterButton(),
+      floatingActionButton: const FloatMasterButton(),
       bottomNavigationBar: const SizedBox(width: 50, child: BottomNavBar(),),
     );
-  }
-
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

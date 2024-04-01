@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PlayerTile extends StatelessWidget {
-  String playerName = "";
-  PlayerTile(String name, {super.key}) : playerName = name;
+  final String playerName;
+  const PlayerTile(String name, {super.key}) : playerName = name;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromRGBO(0, 75, 91, 0.9),
+      color: const Color.fromRGBO(0, 75, 91, 0.9),
       child: ListTile(
         leading: const Icon(
           Icons.shield,
@@ -25,15 +25,12 @@ class PlayerTile extends StatelessWidget {
         trailing: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
           onPressed: () {},
-          child: Icon(
+          child: const Icon(
             Icons.edit,
             color: Colors.white,
           ),
         ),
       ),
     );
-
-    // TODO: implement build
-    throw UnimplementedError();
   }
 }
