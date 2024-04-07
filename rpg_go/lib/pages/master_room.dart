@@ -14,17 +14,17 @@ class MasterRoom extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              RoomHeader("Nome do RPG"),
+              const RoomHeader("Nome do RPG"),
               const Text("Fichas da mesa:",
                   style: TextStyle(
                       color: Colors.white, fontSize: 32, fontFamily: 'Revol')),
               Expanded(
                 child: ListView(
-                  children: [
-                    PlayerTile("name"),
-                    PlayerTile("name"),
-                    PlayerTile("name"),
-                    PlayerTile("name"),
+                  children: const [
+                    PlayerTile("Jogador 1"),
+                    PlayerTile("Jogador 2"),
+                    PlayerTile("Jogador 3"),
+                    PlayerTile("Jogador 4"),
                   ],
                 ),
               )
@@ -44,12 +44,13 @@ class MasterRoom extends StatelessWidget {
       onPressed: () {
         //print("oi");
       },
+      
       backgroundColor: const Color.fromRGBO(0, 75, 91, 1),
       shape: RoundedRectangleBorder(
           side: const BorderSide(color: Colors.white),
           borderRadius: BorderRadius.circular(100)),
       child: const Icon(
-        Icons.qr_code,
+        Icons.qr_code_scanner_sharp,
         color: Colors.white,
       ),
     );

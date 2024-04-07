@@ -19,7 +19,7 @@ class BottomNavBar extends StatelessWidget {
       shape: const AutomaticNotchedShape(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(50),
+            Radius.circular(10),
           ),
         ),
       ),

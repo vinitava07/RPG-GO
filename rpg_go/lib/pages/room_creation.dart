@@ -25,52 +25,89 @@ class _RoomCreationState extends State<RoomCreation> {
           child: Center(
             child: Column(
               children: [
-                const RoomHeader("Config Table"),
+                const RoomHeader("Configurar Sala"),
                 const SizedBox(height: 20),
                 const SizedBox(
                   width: 300,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Room Name',
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Nome da sala",
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontFamily: 'Revol'),
                       ),
-                      fillColor: Colors.white,
-                      filled: true,
-                    ),
-                    cursorColor: Colors.black,
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Room Name',
+                          hintStyle: TextStyle(fontFamily: "Revol"),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white38),
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
+                        ),
+                        cursorColor: Colors.black,
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20),
                 const SizedBox(
                   width: 150,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Room Size',
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Número de\n jogadores",
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                            fontFamily: 'Revol'),
                       ),
-                      fillColor: Colors.white,
-                      filled: true,
-                    ),
-                    cursorColor: Colors.black,
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Room Size',
+                          hintStyle: TextStyle(fontFamily: "Revol"),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white38),
+                          ),
+                          fillColor: Colors.white,
+                          filled: true,
+                        ),
+                        cursorColor: Colors.black,
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromRGBO(0, 75, 91, 1),
+                        padding: EdgeInsets.only(right: 60, left: 60),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const MasterRoom()));
                     },
-                    child: const Text('Go!', style: TextStyle(color: Colors.black))),
+                    child: const Text('Confirmar',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Revol',
+                            fontSize: 25))),
               ],
             ),
           ),

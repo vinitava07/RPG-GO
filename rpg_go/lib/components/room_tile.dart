@@ -20,24 +20,32 @@ class _RoomTileState extends State<RoomTile> {
       color: const Color.fromRGBO(0, 75, 91, 0.9),
       child: ListTile(
         leading: const Icon(
-          Icons.shield,
+          Icons.table_bar,
           size: 30,
-          color: Colors.amber,
+          color: Colors.black,
         ),
         title: Text(
           widget.nomeSala,
           style: const TextStyle(
-              fontSize: 20, fontFamily: 'Revol', color: Colors.white),
+              fontSize: 24, fontFamily: 'Revol', color: Colors.white),
         ),
         dense: false,
         onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => const SheetPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const SheetPage()));
         },
         contentPadding: const EdgeInsets.all(30),
-        trailing: Text(
-          widget.situacao,
-          style: const TextStyle(color: Colors.white),
+        trailing: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            color: const Color.fromARGB(228, 173, 43, 220),
+            child: Text(
+              widget.situacao,
+              style: const TextStyle(
+                  color: Colors.white, fontFamily: 'Revol', fontSize: 16),
+            ),
+          ),
         ),
       ),
     );

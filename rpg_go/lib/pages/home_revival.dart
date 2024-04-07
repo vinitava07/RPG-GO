@@ -6,9 +6,7 @@ import 'package:rpg_go/components/room_tile.dart';
 
 class HomeRevival extends StatefulWidget {
   final List<RoomTile>? salas;
-  const HomeRevival(List<RoomTile>? s, {super.key})
-  : salas = s
-  ;
+  const HomeRevival(List<RoomTile>? s, {super.key}) : salas = s;
 
   @override
   State<HomeRevival> createState() => _HomeRevivalState();
@@ -27,15 +25,12 @@ class _HomeRevivalState extends State<HomeRevival> {
               Expanded(
                 child: ListView(
                   children: const [
-                    RoomTile(
-                      "Nome da Sala",
-                      "Jogador",
-                    ),
-                    RoomTile("nome", "situ"),
-                    RoomTile("nome", "situ"),
-                    RoomTile("nome", "situ"),
-                    RoomTile("nome", "situ"),
-                    RoomTile("nome", "situ"),
+                    RoomTile("Nome da Sala", "Jogador"),
+                    RoomTile("Aventura 1", "Jogador"),
+                    RoomTile("Aventura 2", "Mestre"),
+                    RoomTile("Aventura 3", "Jogador"),
+                    RoomTile("Aventura 4", "Jogador"),
+                    RoomTile("Aventura 5", "Mestre"),
                   ],
                 ),
               ),
@@ -46,7 +41,10 @@ class _HomeRevivalState extends State<HomeRevival> {
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const FloatMasterButton(),
-      bottomNavigationBar: const SizedBox(width: 50, child: BottomNavBar(),),
+      bottomNavigationBar: const SizedBox(
+        width: 50,
+        child: BottomNavBar(),
+      ),
     );
   }
 }
