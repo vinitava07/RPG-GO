@@ -8,7 +8,6 @@ class RoomTile extends StatefulWidget {
   const RoomTile(String nome, String situ, {super.key})
       : nomeSala = nome,
         situacao = situ;
-
   @override
   State<RoomTile> createState() => _RoomTileState();
 }
@@ -39,7 +38,12 @@ class _RoomTileState extends State<RoomTile> {
           borderRadius: BorderRadius.circular(10),
           child: Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
-            color: const Color.fromARGB(228, 173, 43, 220),
+            color: widget.situacao == 'Jogador'
+                ? const Color.fromARGB(180, 66, 214, 223) 
+                : widget.situacao == 'Mestre'
+                    ? const Color.fromARGB(
+                        180, 138, 149, 251)
+                    : Colors.red, // Outras situações têm cor transparente
             child: Text(
               widget.situacao,
               style: const TextStyle(
