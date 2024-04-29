@@ -43,7 +43,7 @@ class _RoomTileState extends State<RoomTile> {
                 : widget.situacao == 'Mestre'
                     ? const Color.fromARGB(
                         180, 138, 149, 251)
-                    : Colors.red, // Outras situações têm cor transparente
+                    : Colors.red, // Outras situações têm cor vermelha
             child: Text(
               widget.situacao,
               style: const TextStyle(

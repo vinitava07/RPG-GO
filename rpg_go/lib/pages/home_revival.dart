@@ -23,14 +23,26 @@ class _HomeRevivalState extends State<HomeRevival> {
             children: [
               const RoomHeader("Minhas Salas"),
               Expanded(
-                child: ListView(
-                  children: const [
-                    RoomTile("Nome da Sala", "Jogador"),
-                    RoomTile("Aventura 1", "Jogador"),
-                    RoomTile("Aventura 2", "Mestre"),
-                    RoomTile("Aventura 3", "Jogador"),
-                    RoomTile("Aventura 4", "Jogador"),
-                    RoomTile("Aventura 5", "Mestre"),
+                child: Stack(
+                  children: [
+                  Center(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxHeight: 500),
+                      child: Image.asset("assets/images/main_background.png",
+                      fit: BoxFit.scaleDown, height: double.infinity, width: double.infinity),
+                    ),
+                  ),
+                    ListView(
+                      //physics: const BouncingScrollPhysics(),
+                      children: const [
+                        RoomTile("Nome da Sala", "Jogador"),
+                        RoomTile("Aventura 1", "Jogador"),
+                        RoomTile("Aventura 2", "Mestre"),
+                        RoomTile("Aventura 3", "Jogador"),
+                        RoomTile("Aventura 4", "Jogador"),
+                        RoomTile("Aventura 5", "Mestre"),
+                      ],
+                    ),
                   ],
                 ),
               ),

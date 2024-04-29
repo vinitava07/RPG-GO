@@ -3,7 +3,6 @@ import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
-import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/pages/master_room.dart';
 
 class RoomCreation extends StatefulWidget {
@@ -25,14 +24,14 @@ class _RoomCreationState extends State<RoomCreation> {
           child: Center(
             child: Column(
               children: [
-                const RoomHeader("Configurar Sala"),
+                const RoomHeader("Config Table"),
                 const SizedBox(height: 20),
                 const SizedBox(
                   width: 300,
                   child: Column(
                     children: [
                       Text(
-                        "Nome da sala",
+                        "Table name",
                         style: TextStyle(
                             fontSize: 30,
                             color: Colors.white,
@@ -42,8 +41,9 @@ class _RoomCreationState extends State<RoomCreation> {
                         height: 20,
                       ),
                       TextField(
+                        textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          hintText: 'Room Name',
+                          hintText: 'eg. The Lost Mines of Phandelver',
                           hintStyle: TextStyle(fontFamily: "Revol"),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white)),
@@ -64,7 +64,7 @@ class _RoomCreationState extends State<RoomCreation> {
                   child: Column(
                     children: [
                       Text(
-                        "Número de\n jogadores",
+                        "Table Size",
                         style: TextStyle(
                             fontSize: 30,
                             color: Colors.white,
@@ -74,8 +74,10 @@ class _RoomCreationState extends State<RoomCreation> {
                         height: 20,
                       ),
                       TextField(
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
                         decoration: InputDecoration(
-                          hintText: 'Room Size',
+                          hintText: 'eg. 5',
                           hintStyle: TextStyle(fontFamily: "Revol"),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.white)),
@@ -94,7 +96,7 @@ class _RoomCreationState extends State<RoomCreation> {
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(0, 75, 91, 1),
-                        padding: EdgeInsets.only(right: 60, left: 60),
+                        padding: const EdgeInsets.only(right: 60, left: 60),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () {

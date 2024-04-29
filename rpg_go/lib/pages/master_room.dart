@@ -25,6 +25,7 @@ class MasterRoom extends StatelessWidget {
                     PlayerTile("Jogador 2"),
                     PlayerTile("Jogador 3"),
                     PlayerTile("Jogador 4"),
+                    PlayerTile("Jogador 5"),
                   ],
                 ),
               )
