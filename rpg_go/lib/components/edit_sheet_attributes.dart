@@ -27,10 +27,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("9(-1)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),
@@ -49,10 +65,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("15(+2)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),
@@ -77,10 +109,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("12(+1)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),
@@ -99,10 +147,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("12(+1)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),
@@ -127,10 +191,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("11(0)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),
@@ -149,10 +229,26 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                Text("15(+2)",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white, height: 1))),
+                const SizedBox(
+                  width: 70,
+                  height: 35,
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      hintText:
+                          '99(+9)', //se usuario existente, aparece o nome atual
+                      hintStyle: TextStyle(fontFamily: "Revol"),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white38),
+                      ),
+                      fillColor: Colors.white,
+                      filled: true,
+                    ),
+                    cursorColor: Colors.black,
+                  ),
+                ),
                 ],
               ),
             ),

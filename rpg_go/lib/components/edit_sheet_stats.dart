@@ -17,12 +17,25 @@ class EditSheetStats extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-            Text(
-              "50",
-              style: GoogleFonts.almendra(
-                  textStyle: GoogleFonts.almendra(
-                      textStyle: const TextStyle(
-                          fontSize: 40, color: Colors.white, height: 0.7))),
+            const SizedBox(
+              width: 60,
+              height: 35,
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText:
+                      '99', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
+              ),
             ),
           ],
         ),
@@ -35,12 +48,25 @@ class EditSheetStats extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-            Text(
-              "30",
-              style: GoogleFonts.almendra(
-                  textStyle: GoogleFonts.almendra(
-                      textStyle: const TextStyle(
-                          fontSize: 40, color: Colors.white, height: 0.5))),
+            const SizedBox(
+              width: 60,
+              height: 35,
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText:
+                      '99', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
+              ),
             ),
           ],
         ),
@@ -63,9 +89,26 @@ class EditSheetStats extends StatelessWidget {
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("17/40",
+                  SizedBox(
+                    width: 100,
+                    height: 30,
+                    child: TextField(
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
+                      decoration: InputDecoration(
+                        hintText:
+                            '99/99', //se usuario existente, aparece o nome atual
+                        hintStyle: TextStyle(fontFamily: "Revol"),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromARGB(255, 186, 24, 24))),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color.fromARGB(255, 186, 24, 24)),
+                        ),
+                        fillColor: Colors.transparent,
+                        filled: true,
+                      ),
+                      cursorColor: Colors.black,
+                    ),
+            ),
                 ],
               ),
             ),

@@ -9,6 +9,7 @@ import 'package:rpg_go/components/sheet_head.dart';
 import 'package:rpg_go/components/sheet_stats.dart';
 import 'package:rpg_go/components/sheet_attributes.dart';
 import 'package:rpg_go/components/sheet_options.dart';
+import 'package:rpg_go/pages/sheet_page.dart';
 
 class EditSheetPage extends StatelessWidget {
   const EditSheetPage({super.key});
@@ -92,6 +93,16 @@ class EditSheetPage extends StatelessWidget {
                   ),
                   child: const Center(child: EditSheetOptions(),)
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(padding: const EdgeInsets.only(right: 25, top: 3),
+                    child: ElevatedButton(onPressed: (){
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const SheetPage()));
+                    }, child: const Text('SAVE')),
+                    )
+                ],)
               ],
             )),
           )),

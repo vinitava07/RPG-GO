@@ -241,13 +241,6 @@ class SheetOptions extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle: const TextStyle(
                         fontSize: 15, color: Colors.white, height: 1))),
-            const SizedBox(height: 5),
-            ElevatedButton(
-              onPressed: () {Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const EditSheetPage()));
-              }, 
-              child: 
-                const Text('EDIT'),)
           ],
         )
       ],

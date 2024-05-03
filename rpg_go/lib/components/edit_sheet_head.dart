@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditSheetHead extends StatelessWidget {
   const EditSheetHead({super.key});
+  //String _name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +20,73 @@ class EditSheetHead extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10), // Espaço entre a imagem e o título
-        Column(
+        const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20), // Espaço entre o topo e o título
-            Text("Jilvio Samil",
-                style: GoogleFonts.almendra(
-                    textStyle:
-                        const TextStyle(fontSize: 25, color: Colors.white))),
-            Text(
-              "Class",
-              style: GoogleFonts.almendra(
-                  textStyle: GoogleFonts.almendra(
-                      textStyle:
-                          const TextStyle(fontSize: 17, color: Colors.white, height: 1))),
+            SizedBox(height: 10), // Espaço entre o topo e o título
+            SizedBox(
+              width: 100,
+              height: 30,
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText:
+                      'Nome', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
+              ),
             ),
-            Text(
-              "Race",
-              style: GoogleFonts.almendra(
-                  textStyle: GoogleFonts.almendra(
-                      textStyle:
-                          const TextStyle(fontSize: 17, color: Colors.white, height: 1))),
+            SizedBox(height: 5),
+            SizedBox(
+              width: 100,
+              height: 30,
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText:
+                      'Class', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
+              ),
             ),
+            SizedBox(height: 5),
+            SizedBox(
+              width: 100,
+              height: 30,
+              child: TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  hintText:
+                      'Race', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
+              ),
+            ),
+            
           ],
         ),
         const SizedBox(width: 70), // Espaço entre o título e a imagem
@@ -53,14 +100,26 @@ class EditSheetHead extends StatelessWidget {
           child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Level",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
-              Text(
-                "15",
+              SizedBox(
+              width: 60,
+              height: 40,
+              child: TextField(
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 28, height: 1),
+                decoration: InputDecoration(
+                  hintText:
+                      'Level', //se usuario existente, aparece o nome atual
+                  hintStyle: TextStyle(fontFamily: "Revol"),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white38),
+                  ),
+                  fillColor: Colors.white,
+                  filled: true,
+                ),
+                cursorColor: Colors.black,
               ),
+            ),
             ],
           ),
         ),
