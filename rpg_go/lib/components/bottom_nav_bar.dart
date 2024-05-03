@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/profile.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -61,7 +62,8 @@ class BottomNavBar extends StatelessWidget {
                 width: 30,
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Profile()));},
                   icon: const Icon(
                     Icons.person,
                     size: 40,

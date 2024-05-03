@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/home_revival.dart';
-// import 'package:rpg_go/pages/login_page.dart';
+import 'package:rpg_go/pages/login_page.dart';
+import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/pages/master_room.dart';
 import 'package:rpg_go/pages/profile.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Profile(),
+      home: const LoginPage(),
       routes: {
         '/home_revival': (context) => const HomeRevival(null),
         '/master_room': (context) => const MasterRoom(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rpg_go/pages/edit_sheet_page.dart';
 
 class SheetOptions extends StatelessWidget {
   const SheetOptions({super.key});
