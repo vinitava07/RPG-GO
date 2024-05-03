@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rpg_go/pages/edit_sheet_page.dart';
 
 class SheetOptions extends StatelessWidget {
   const SheetOptions({super.key});
@@ -240,6 +241,13 @@ class SheetOptions extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle: const TextStyle(
                         fontSize: 15, color: Colors.white, height: 1))),
+            const SizedBox(height: 5),
+            ElevatedButton(
+              onPressed: () {Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const EditSheetPage()));
+              }, 
+              child: 
+                const Text('EDIT'),)
           ],
         )
       ],
