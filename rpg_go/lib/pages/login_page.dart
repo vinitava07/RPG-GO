@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/pages/home_revival.dart';
+import 'package:rpg_go/pages/sign_up.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -61,14 +62,30 @@ class LoginPage extends StatelessWidget {
                 ),
                 const MyTextField(),
                 const SizedBox(height: 50),
-                ElevatedButton(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(padding: const EdgeInsets.only(left: 25, top: 3),
+                    child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpPage()));
+                    },
+                    child: const Text('Não tenho Conta', style: TextStyle(color: Colors.black))),
+                    ),
+                    Padding(padding: const EdgeInsets.only(left: 120, top: 3),
+                    child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const HomeRevival(null)));
                     },
-                    child: const Text('Entrar', style: TextStyle(color: Colors.black))),
+                    child: const Text('Login', style: TextStyle(color: Colors.black))),
+                    )
+                ],)
               ],
             )),
           )),
