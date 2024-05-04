@@ -8,6 +8,7 @@ import 'package:rpg_go/pages/master_room.dart';
 
 void main() {
   runApp(const MyApp());
+  //await dotenv.load(fileName: ".env");
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomeRevival(null),
       routes: {
         '/home_revival': (context) => const HomeRevival(null),
         '/master_room': (context) => const MasterRoom(),
