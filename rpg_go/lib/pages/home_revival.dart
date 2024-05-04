@@ -3,10 +3,11 @@ import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
+import 'package:rpg_go/models/User.dart';
 
 class HomeRevival extends StatefulWidget {
-  final List<RoomTile>? salas;
-  const HomeRevival(List<RoomTile>? s, {super.key}) : salas = s;
+  final User? user;
+  const HomeRevival(User? u , {super.key}) : user = u;
 
   @override
   State<HomeRevival> createState() => _HomeRevivalState();

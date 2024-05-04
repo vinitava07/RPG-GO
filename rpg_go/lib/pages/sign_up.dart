@@ -49,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const MyTextField(),
+                //MyTextField(),
                 const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.topLeft,
@@ -60,7 +60,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const MyTextField(),
+                //MyTextField(),
                 const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.topLeft,
@@ -71,7 +71,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                const MyTextField(),
+                //MyTextField(),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -82,7 +82,7 @@ class SignUpPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
+                              builder: (context) => LoginPage()));
                     },
                     child: const Text('Já tenho uma conta', style: TextStyle(color: Colors.black))),
                     ),

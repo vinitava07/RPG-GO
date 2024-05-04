@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyTextField extends StatelessWidget {
-  const MyTextField({super.key});
-
+  final controller;
+  MyTextField({
+    super.key,
+    required this.controller,
+  });
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
-        decoration: InputDecoration(
+        controller: controller,
+        decoration: const InputDecoration(
           enabledBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           focusedBorder: OutlineInputBorder(
