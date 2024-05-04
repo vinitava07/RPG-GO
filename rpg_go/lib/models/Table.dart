@@ -14,8 +14,11 @@ class Table {
   });
 
   factory Table.fromJson(Map<String, dynamic> json) {
-    final rooms =
-        List<Room>.from(json['rooms']?.map((room) => Room.fromJson(room)));
+    const rooms = null;
+    if (json['rooms'] != null) {
+      final rooms =
+          List<Room>.from(json['rooms']?.map((room) => Room.fromJson(room)));
+    }
     return Table(
       id: json['id'],
       name: json['name'],

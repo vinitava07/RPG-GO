@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/login_page.dart';
 import 'package:rpg_go/pages/master_room.dart';
@@ -6,7 +7,8 @@ import 'package:rpg_go/pages/master_room.dart';
 //import 'pages/attack_page.dart';
 //import 'package:rpg_go/pages/sheet_page.dart';
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: "lib/.env");
   runApp(const MyApp());
 }
 
@@ -19,8 +21,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
       routes: {
-        '/home_revival': (context) => const HomeRevival(null),
-        '/master_room': (context) => const MasterRoom(),
+        '/home_revival': (context) => HomeRevival(null),
+        '/master_room': (context) =>  MasterRoom(),
       },
     );
   }

@@ -6,16 +6,23 @@ import 'package:rpg_go/components/room_tile.dart';
 import 'package:rpg_go/models/User.dart';
 
 class HomeRevival extends StatefulWidget {
-  final User? user;
-  const HomeRevival(User? u , {super.key}) : user = u;
+  User? user;
+  HomeRevival(User? u, {super.key}) : user = u;
 
   @override
-  State<HomeRevival> createState() => _HomeRevivalState();
+  State<HomeRevival> createState() => _HomeRevivalState(user);
 }
 
 class _HomeRevivalState extends State<HomeRevival> {
+  User? user;
+  List<RoomTile>? roomList;
+  List<RoomTile>? tableList;
+
+  _HomeRevivalState(User? u) : user = u;
+
   @override
   Widget build(BuildContext context) {
+    roomToTile();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
       body: SafeArea(
@@ -26,23 +33,21 @@ class _HomeRevivalState extends State<HomeRevival> {
               Expanded(
                 child: Stack(
                   children: [
-                  Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: 500),
-                      child: Image.asset("assets/images/main_background.png",
-                      fit: BoxFit.scaleDown, height: double.infinity, width: double.infinity),
+                    Center(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: 500),
+                        child: Image.asset("assets/images/main_background.png",
+                            fit: BoxFit.scaleDown,
+                            height: double.infinity,
+                            width: double.infinity),
+                      ),
                     ),
-                  ),
-                    ListView(
+                    ListView.builder(
+                      itemCount: roomList!.length,
+                      itemBuilder: (context, index) {
+                        return roomList!.elementAt(index);
+                      },
                       //physics: const BouncingScrollPhysics(),
-                      children: const [
-                        RoomTile("Nome da Sala", "Jogador"),
-                        RoomTile("Aventura 1", "Jogador"),
-                        RoomTile("Aventura 2", "Mestre"),
-                        RoomTile("Aventura 3", "Jogador"),
-                        RoomTile("Aventura 4", "Jogador"),
-                        RoomTile("Aventura 5", "Mestre"),
-                      ],
                     ),
                   ],
                 ),
@@ -59,5 +64,14 @@ class _HomeRevivalState extends State<HomeRevival> {
         child: BottomNavBar(),
       ),
     );
+  }
+
+  void roomToTile() {
+    for (var room in user!.rooms!) {
+      roomList?.add(RoomTile(room.tableName, "Jogador"));
+    }
+    for (var table in user!.tables!) {
+      tableList?.add(RoomTile(table.name, "Mestre"));
+    }
   }
 }

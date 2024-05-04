@@ -1,10 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/components/text_field.dart';
+import 'package:rpg_go/models/User.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/login_page.dart';
+import 'package:http/http.dart' as http;
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  SignUpPage({super.key});
+  User? user;
+  final _controllerName = TextEditingController();
+  final _controllerPassword = TextEditingController();
+  final _controllerConfirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +54,13 @@ class SignUpPage extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 20.0), // Adiciona padding de 16 pixels à esquerda
                   child: const Text(
-                    "UserName",
+                    "Username",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                //MyTextField(),
+                MyTextField(
+                  controller: _controllerName,
+                ),
                 const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.topLeft,
@@ -60,7 +71,9 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                //MyTextField(),
+                MyTextField(
+                  controller: _controllerPassword,
+                ),
                 const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.topLeft,
@@ -71,35 +84,86 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                //MyTextField(),
+                MyTextField(
+                  controller: _controllerConfirmPassword,
+                ),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(padding: const EdgeInsets.only(left: 25, top: 3),
-                    child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginPage()));
-                    },
-                    child: const Text('Já tenho uma conta', style: TextStyle(color: Colors.black))),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25, top: 3),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
+                          child: const Text('Já tenho uma conta',
+                              style: TextStyle(color: Colors.black))),
                     ),
-                    Padding(padding: const EdgeInsets.only(left: 80, top: 3),
-                    child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeRevival(null)));
-                    },
-                    child: const Text('Cadastro', style: TextStyle(color: Colors.black))),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 80, top: 3),
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            if (fieldCheck()) {
+                              if (await signUpUser(_controllerName.text,
+                                  _controllerPassword.text)) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            HomeRevival(user!)));
+                              } else {
+                                print("usuario ja existe");
+                              }
+                            }
+                          },
+                          child: const Text('Cadastro',
+                              style: TextStyle(color: Colors.black))),
                     )
-                ],)
+                  ],
+                )
               ],
             )),
           )),
         ));
+  }
+
+  bool fieldCheck() {
+    bool canClick = false;
+    if (_controllerConfirmPassword.text.compareTo(_controllerPassword.text) !=
+        0) {
+      print("SENHAS DIFERENTES");
+      return canClick;
+    } else if (_controllerName.text == "" || _controllerPassword.text == "") {
+      print("Os campos nao podem estar vazios");
+      return canClick;
+    }
+    canClick = true;
+    return canClick;
+  }
+
+  Future<bool> signUpUser(String name, String password) async {
+    final response = await http.post(
+      Uri.parse("${dotenv.env['API_URL']!}user"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'name': name,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      print(response.body);
+      user = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      return true;
+    } else {
+      return false;
+      // throw Exception('Requisition Failed - Login.');
+    }
   }
 }
