@@ -16,26 +16,21 @@ class Sheet {
     required this.spells,
   });
 
-  factory Sheet.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'id': int id,
-        'name': String name,
-        'playerClass': String playerClass,
-        'race' : String race,
-        'playerLevel': int level,
-        'spells': String spells,
-      } =>
-        Sheet(
-          id: id,
-          name: name,
-          playerClass: playerClass,
-          race: race,
-          level: level,
-          spells: spells,
-        ),
-      _ => throw const FormatException('Failed to load Sheet.'),
-    };
-  }
+  Sheet.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        playerClass = json['playerClass'],
+        race = json['race'],
+        level = json['playerLevel'],
+        spells = json['spells'];
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'playerClass': playerClass,
+        'race' : race,
+        'playerLevel' : level,
+        'spells' : spells,
+      };
 }
 

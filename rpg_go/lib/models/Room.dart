@@ -16,26 +16,21 @@ class Room {
     required this.userId,
   });
 
-  factory Room.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'id': int id,
-        'tableName': String tableName,
-        'sheetName': String sheetName,
-        'tableId': int tableId,
-        'sheetId': int sheetId,
-        'userId': int userId,
-      } =>
-        Room(
-          id: id,
-          tableName: tableName,
-          sheetName: sheetName,
-          tableId: tableId,
-          sheetId: sheetId,
-          userId: userId,
-        ),
-      _ => throw const FormatException('Failed to load Room.'),
-    };
-  }
+  Room.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        tableName = json['tableName'],
+        sheetName = json['sheetName'],
+        tableId = json['tableId'],
+        sheetId = json['sheetId'],
+        userId = json['userId'];
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'tableName': tableName,
+        'sheetName': sheetName,
+        'tableId': tableId,
+        'sheetId': sheetId,
+        'userId': userId,
+      };
 }
 

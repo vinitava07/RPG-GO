@@ -3,22 +3,17 @@ import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
-import 'package:rpg_go/models/User.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class HomeRevival extends StatefulWidget {
-  User? user;
-  HomeRevival(User? u, {super.key}) : user = u;
+  HomeRevival({super.key});
 
   @override
-  State<HomeRevival> createState() => _HomeRevivalState(user);
+  State<HomeRevival> createState() => _HomeRevivalState();
 }
 
 class _HomeRevivalState extends State<HomeRevival> {
-  User? user;
-  List<RoomTile>? roomList;
-  List<RoomTile>? tableList;
-
-  _HomeRevivalState(User? u) : user = u;
+  List<RoomTile>? roomList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +40,7 @@ class _HomeRevivalState extends State<HomeRevival> {
                     ListView.builder(
                       itemCount: roomList!.length,
                       itemBuilder: (context, index) {
-                        return roomList!.elementAt(index);
+                        return roomList![index];
                       },
                       //physics: const BouncingScrollPhysics(),
                     ),
@@ -67,11 +62,11 @@ class _HomeRevivalState extends State<HomeRevival> {
   }
 
   void roomToTile() {
-    for (var room in user!.rooms!) {
+    for (var room in globals.loggedUser!.rooms!) {
       roomList?.add(RoomTile(room.tableName, "Jogador"));
     }
-    for (var table in user!.tables!) {
-      tableList?.add(RoomTile(table.name, "Mestre"));
+    for (var table in globals.loggedUser!.tables!) {
+      roomList?.add(RoomTile(table.name, "Mestre"));
     }
   }
 }

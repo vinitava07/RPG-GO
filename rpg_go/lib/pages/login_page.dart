@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
+import 'package:rpg_go/models/globals.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class LoginPage extends StatelessWidget {
   LoginPage({
@@ -97,7 +99,7 @@ class LoginPage extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeRevival(user)));
+                                      builder: (context) => HomeRevival()));
                             } else {
                               print("ERRO");
                               showDialog(
@@ -147,7 +149,7 @@ class LoginPage extends StatelessWidget {
       // If the server did return a 200 CREATED response,
       // then parse the JSON.
       print(response.body);
-      user = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       return true;
     } else {
       // If the server did not return a 201 CREATED response,

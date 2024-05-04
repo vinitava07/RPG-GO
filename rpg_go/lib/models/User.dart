@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:rpg_go/models/Table.dart';
 import 'package:rpg_go/models/Room.dart';
 import 'package:rpg_go/models/Sheet.dart';
@@ -8,9 +6,9 @@ class User {
   int id;
   String name;
   String password;
-  List<Sheet>? sheets;
-  List<Table>? tables;
-  List<Room>? rooms;
+  List<Sheet>? sheets = [];
+  List<Table>? tables = [];
+  List<Room>? rooms = [];
 
   User(
     this.id,
@@ -39,5 +37,8 @@ class User {
         'id': id,
         'name': name,
         'password': password,
+        'rooms': rooms?.map((item) => item.toJson()).toList(),
+        'rpgTableList': tables?.map((item) => item.toJson()).toList(),
+        'sheets': sheets?.map((item) => item.toJson()).toList(),
       };
 }

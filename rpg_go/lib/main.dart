@@ -9,7 +9,8 @@ import 'package:rpg_go/pages/master_room.dart';
 
 Future main() async {
   await dotenv.load(fileName: "lib/.env");
-  runApp(const MyApp());
+  runApp(
+    const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
       routes: {
-        '/home_revival': (context) => HomeRevival(null),
+        '/home_revival': (context) => HomeRevival(),
         '/master_room': (context) =>  MasterRoom(),
       },
     );

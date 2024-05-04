@@ -1,29 +1,31 @@
 import 'package:rpg_go/models/Room.dart';
 
 class Table {
-  final int id;
-  final String name;
-  final List<Room>? rooms;
-  final int masterId;
+  int id;
+  String name;
+  List<Room>? rooms =[];
+  int masterId;
 
-  const Table({
+  Table({
     required this.id,
     required this.name,
     this.rooms,
     required this.masterId,
   });
 
-  factory Table.fromJson(Map<String, dynamic> json) {
-    const rooms = null;
-    if (json['rooms'] != null) {
-      final rooms =
-          List<Room>.from(json['rooms']?.map((room) => Room.fromJson(room)));
-    }
-    return Table(
-      id: json['id'],
-      name: json['name'],
-      rooms: rooms,
-      masterId: json['masterId'],
-    );
-  }
+Table.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        rooms = json['rooms'] != null
+            ? List<dynamic>.from(json['rooms']).map((i) => Room.fromJson(i)).toList()
+            : null,
+        masterId = json['masterId'];
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'rooms': rooms,
+        'masterId': masterId,
+      };
+  
 }

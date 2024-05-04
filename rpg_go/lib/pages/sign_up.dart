@@ -114,7 +114,7 @@ class SignUpPage extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            HomeRevival(user!)));
+                                            HomeRevival()));
                               } else {
                                 print("usuario ja existe");
                               }
