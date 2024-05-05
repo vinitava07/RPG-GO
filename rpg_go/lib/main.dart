@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomeRevival(null),
       routes: {
         '/home_revival': (context) => HomeRevival(),
         '/master_room': (context) =>  MasterRoom(),
