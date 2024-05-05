@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                MyTextField(controller: _controllerPassword),
+                MyPasswordField(controller: _controllerPassword),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -156,5 +156,49 @@ class LoginPage extends StatelessWidget {
       // then throw an exception.
       throw Exception('Requisition Failed - Login.');
     }
+  }
+}
+
+class MyPasswordField extends StatefulWidget {
+  final TextEditingController controller;
+
+  const MyPasswordField({required this.controller});
+
+  @override
+  _MyPasswordFieldState createState() => _MyPasswordFieldState();
+}
+
+class _MyPasswordFieldState extends State<MyPasswordField> {
+  bool _obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: TextField(
+        controller: widget.controller,
+        obscureText: _obscureText,
+        onChanged: (value) {
+          setState(() {});
+        },
+        decoration: InputDecoration(
+          labelText: 'Password',
+          fillColor: Colors.white,
+          filled: true,
+          border: OutlineInputBorder(),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _obscureText ? Icons.visibility : Icons.visibility_off,
+              color: Colors.grey,
+            ),
+            onPressed: () {
+              setState(() {
+                _obscureText = !_obscureText;
+              });
+            },
+          ),
+        ),
+      ),
+    );
   }
 }

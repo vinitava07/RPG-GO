@@ -17,13 +17,6 @@ class BottomNavBar extends StatelessWidget {
       height: 70,
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       // elevation: 20,
-      shape: const AutomaticNotchedShape(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-      ),
       color: Colors.black,
       child: IconTheme(
         data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),

@@ -99,7 +99,10 @@ class EditSheetPage extends StatelessWidget {
                     Padding(padding: const EdgeInsets.only(right: 25, top: 3),
                     child: ElevatedButton(onPressed: (){
                       Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const SheetPage()));
+                      MaterialPageRoute(builder: (context) {
+                        final sId = 0; // ou qualquer outra lógica para calcular sheetId
+                        return SheetPage(sId);
+                      }));
                     }, child: const Text('SAVE')),
                     )
                 ],)

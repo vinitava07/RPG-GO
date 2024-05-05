@@ -31,7 +31,10 @@ class _RoomTileState extends State<RoomTile> {
         dense: false,
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const SheetPage()));
+              MaterialPageRoute(builder: (context) {
+                  final sId = 0; // ou qualquer outra lógica para calcular sheetId
+                  return SheetPage(sId);
+                }));
         },
         contentPadding: const EdgeInsets.all(30),
         trailing: ClipRRect(

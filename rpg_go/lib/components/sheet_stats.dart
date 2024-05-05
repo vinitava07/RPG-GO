@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class SheetStats extends StatelessWidget {
   const SheetStats({Key? key}) : super(key: key);

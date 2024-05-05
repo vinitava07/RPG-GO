@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rpg_go/models/Sheet.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class SheetHead extends StatelessWidget {
-  const SheetHead({Key? key}) : super(key: key);
+  final int sheetId;
+  const SheetHead(int id,{Key? key}) : sheetId = id,super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +33,20 @@ class SheetHead extends StatelessWidget {
   }
 
   Widget _buildInfoColumn() {
+    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
         Text(
-          "Jilvio Samil",
+          thisSheet.name,
           style: GoogleFonts.almendra(
             textStyle: const TextStyle(fontSize: 25, color: Colors.white),
           ),
         ),
-        _buildInfoText("Class"),
-        _buildInfoText("Race"),
+        _buildInfoText("Class: ${thisSheet.playerClass}"),//${specificSheet}"),
+        _buildInfoText("Race: ${thisSheet.race}"),//${specificSheet}"),
       ],
     );
   }
@@ -56,6 +61,7 @@ class SheetHead extends StatelessWidget {
   }
 
   Widget _buildLevelContainer() {
+    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
     return Container(
       width: 70,
       height: 70,
@@ -63,7 +69,7 @@ class SheetHead extends StatelessWidget {
         color: const Color.fromARGB(255, 195, 194, 194),
         borderRadius: BorderRadius.circular(15),
       ),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -72,7 +78,7 @@ class SheetHead extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           Text(
-            "1",
+            "${thisSheet.level}",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 28, height: 1),
           ),

@@ -141,8 +141,10 @@ class _ProfileState extends State<Profile> {
   }
 
   void sheetToTile() {
+    int index = 0;
     for (var sheet in globals.loggedUser!.sheets!) {
-      sheetList?.add(PlayerTile(sheet.name));
+      sheetList?.add(PlayerTile(sheet.name, index));
+      index++;
     }
   }
 }

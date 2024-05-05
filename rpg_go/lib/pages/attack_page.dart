@@ -8,7 +8,8 @@ import 'package:rpg_go/components/sheet_options.dart';
 import 'package:rpg_go/components/dropdown_list.dart';
 
 class AttackPage extends StatelessWidget {
-  const AttackPage({super.key});
+  final int sheetId;
+  const AttackPage(int id, {super.key}) : sheetId = id;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class AttackPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const SheetHead(),
+                  child: SheetHead(sheetId),
                 ),
                 const SizedBox(height: 20),
                 Container(

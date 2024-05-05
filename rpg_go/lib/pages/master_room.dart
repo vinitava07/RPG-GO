@@ -21,11 +21,11 @@ class MasterRoom extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: const [
-                    PlayerTile("Jogador 1"),
-                    PlayerTile("Jogador 2"),
-                    PlayerTile("Jogador 3"),
-                    PlayerTile("Jogador 4"),
-                    PlayerTile("Jogador 5"),
+                    PlayerTile("Jogador 1", 1),
+                    PlayerTile("Jogador 2", 2),
+                    PlayerTile("Jogador 3", 3),
+                    PlayerTile("Jogador 4", 4),
+                    PlayerTile("Jogador 5", 5),
                   ],
                 ),
               )

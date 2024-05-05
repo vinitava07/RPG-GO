@@ -5,13 +5,17 @@ import 'package:rpg_go/components/sheet_head.dart';
 import 'package:rpg_go/components/sheet_stats.dart';
 import 'package:rpg_go/components/sheet_attributes.dart';
 import 'package:rpg_go/components/sheet_options.dart';
+import 'package:rpg_go/models/Sheet.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class SheetPage extends StatelessWidget {
-  const SheetPage({super.key});
+  final int sheetId;
+  const SheetPage(int id, {super.key}) : sheetId = id;
 
   @override
   Widget build(BuildContext context) {
+    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
     return Scaffold(
         backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
         body: SingleChildScrollView(
@@ -35,7 +39,7 @@ class SheetPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const SheetHead(),
+                  child: SheetHead(sheetId),
                 ),
                 const SizedBox(height: 20),
                 Container(
