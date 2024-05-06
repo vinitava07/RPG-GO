@@ -101,7 +101,7 @@ class SheetPage extends StatelessWidget {
                     Padding(padding: const EdgeInsets.only(right: 25, top: 3),
                     child: ElevatedButton(onPressed: (){
                       Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const EditSheetPage()));
+                      MaterialPageRoute(builder: (context) => EditSheetPage(true)));
                     }, child: const Text('EDIT')),
                     )
                 ],)

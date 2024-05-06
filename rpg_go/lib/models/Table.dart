@@ -18,7 +18,7 @@ Table.fromJson(Map<String, dynamic> json)
         name = json['name'],
         rooms = json['rooms'] != null
             ? List<dynamic>.from(json['rooms']).map((i) => Room.fromJson(i)).toList()
-            : null,
+            : List.empty(),
         masterId = json['masterId'];
 
   Map<String, dynamic> toJson() => {

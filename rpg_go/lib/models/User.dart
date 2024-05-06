@@ -23,15 +23,15 @@ class User {
       : id = json['id'],
         name = json['name'],
         password = json['password'],
-        rooms = List<dynamic>.from(json['rooms'])
-            .map((i) => Room.fromJson(i))
-            .toList(),
-        tables = List<dynamic>.from(json['rpgTableList'])
+        rooms = json['rooms'] != null
+            ? List<dynamic>.from(json['rooms']).map((i) => Room.fromJson(i)).toList()
+            : List.empty(),
+        tables = json["rpgTableList"] != null ? List<dynamic>.from(json['rpgTableList'])
             .map((i) => Table.fromJson(i))
-            .toList(),
-        sheets = List<dynamic>.from(json['sheets'])
+            .toList(): List.empty(),
+        sheets = json["sheets"] != null ? List<dynamic>.from(json['sheets'])
             .map((i) => Sheet.fromJson(i))
-            .toList();
+            .toList(): List.empty();
 
   Map<String, dynamic> toJson() => {
         'id': id,

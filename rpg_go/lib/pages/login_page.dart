@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                MyTextField(controller: _controllerName),
+                MyTextField(controller: _controllerName, hint_text: 'Username'),
                 const SizedBox(height: 20),
                 Container(
                   alignment: Alignment.topLeft,
@@ -90,7 +90,7 @@ class LoginPage extends StatelessWidget {
                               style: TextStyle(color: Colors.black))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 120, top: 3),
+                      padding: const EdgeInsets.only(left: 110, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
                             if (await loginUser(_controllerName.text,
@@ -182,7 +182,7 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
           setState(() {});
         },
         decoration: InputDecoration(
-          labelText: 'Password',
+          hintText: 'Password',
           fillColor: Colors.white,
           filled: true,
           border: OutlineInputBorder(),

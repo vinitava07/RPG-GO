@@ -6,6 +6,7 @@ import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/login_page.dart';
+import 'package:rpg_go/models/globals.dart' as globals;  
 import 'package:http/http.dart' as http;
 
 class SignUpPage extends StatelessWidget {
@@ -59,7 +60,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                 ),
                 MyTextField(
-                  controller: _controllerName,
+                  controller: _controllerName, hint_text: "Username",
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -71,7 +72,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                MyTextField(
+                MyPasswordField(
                   controller: _controllerPassword,
                 ),
                 const SizedBox(height: 20),
@@ -84,7 +85,7 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                MyTextField(
+                MyPasswordField(
                   controller: _controllerConfirmPassword,
                 ),
                 const SizedBox(height: 50),
@@ -110,6 +111,7 @@ class SignUpPage extends StatelessWidget {
                             if (fieldCheck()) {
                               if (await signUpUser(_controllerName.text,
                                   _controllerPassword.text)) {
+                                await Future.delayed(const Duration(milliseconds: 300));
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -159,7 +161,7 @@ class SignUpPage extends StatelessWidget {
 
     if (response.statusCode == 201) {
       print(response.body);
-      user = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       return true;
     } else {
       return false;

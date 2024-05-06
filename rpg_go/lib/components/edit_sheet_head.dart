@@ -3,8 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditSheetHead extends StatelessWidget {
-  const EditSheetHead({super.key});
-  //String _name = '';
+  final controllerName;
+  final controllerClass;
+  final controllerRace;
+  final controllerLevel;
+  EditSheetHead({super.key, required this.controllerName ,required this.controllerClass,required this.controllerRace,required this.controllerLevel});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +23,17 @@ class EditSheetHead extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10), // Espaço entre a imagem e o título
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10), // Espaço entre o topo e o título
+            const SizedBox(height: 10), // Espaço entre o topo e o título
             SizedBox(
               width: 100,
               height: 30,
               child: TextField(
+                controller: controllerName,
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText:
                       'Nome', //se usuario existente, aparece o nome atual
                   hintStyle: TextStyle(fontFamily: "Revol"),
@@ -44,13 +48,14 @@ class EditSheetHead extends StatelessWidget {
                 cursorColor: Colors.black,
               ),
             ),
-            SizedBox(height: 5),
-            SizedBox(
+            const SizedBox(height: 5),
+             SizedBox(
               width: 100,
               height: 30,
               child: TextField(
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                controller: controllerClass,
+                decoration: const InputDecoration(
                   hintText:
                       'Class', //se usuario existente, aparece o nome atual
                   hintStyle: TextStyle(fontFamily: "Revol"),
@@ -65,13 +70,14 @@ class EditSheetHead extends StatelessWidget {
                 cursorColor: Colors.black,
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             SizedBox(
               width: 100,
               height: 30,
               child: TextField(
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                controller: controllerRace,
+                decoration: const InputDecoration(
                   hintText:
                       'Race', //se usuario existente, aparece o nome atual
                   hintStyle: TextStyle(fontFamily: "Revol"),
@@ -97,7 +103,7 @@ class EditSheetHead extends StatelessWidget {
             color: const Color.fromARGB(255, 195, 194, 194),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
@@ -105,7 +111,8 @@ class EditSheetHead extends StatelessWidget {
               height: 40,
               child: TextField(
                 textAlign: TextAlign.center,
-                decoration: InputDecoration(
+                controller: controllerLevel,
+                decoration: const InputDecoration(
                   hintText:
                       'Level', //se usuario existente, aparece o nome atual
                   hintStyle: TextStyle(fontFamily: "Revol"),

@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/player_tile.dart';
@@ -6,6 +9,9 @@ import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/pages/profile_settings.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:http/http.dart' as http;
+
+import '../models/User.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -49,7 +55,7 @@ class _ProfileState extends State<Profile> {
                                 width: 10,
                               ),
                               Text(
-                                "HELLO, ${globals.loggedUser.name}!",
+                                "Olá, ${globals.loggedUser.name}!",
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 30,
@@ -82,31 +88,29 @@ class _ProfileState extends State<Profile> {
                     Container(
                       margin: const EdgeInsets.only(
                           top: 100, bottom: 50, left: 10, right: 10),
-                      child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(227, 4, 163, 102)),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const EditSheetPage()));
-                              },
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text("Nova Ficha",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 25, fontFamily: 'Revol')),
-                                  SizedBox(width: 5,),
-                                  Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
+                      child: Row(
+                        children: [
+                          NewSheetButton(
+                              text: "Nova Ficha",
+                              symbol: Icons.add,
+                              color: const Color.fromARGB(227, 4, 163, 102)),
+                          const SizedBox(
+                            width: 100,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(226, 6, 218, 211)),
+                            onPressed: () async {
+                              updateSheets();
+                            },
+                            child: const Icon(
+                              Icons.refresh,
+                              color: Colors.white,
                             ),
+                          )
+                        ],
+                      ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(
@@ -146,5 +150,57 @@ class _ProfileState extends State<Profile> {
       sheetList?.add(PlayerTile(sheet.name, index));
       index++;
     }
+  }
+
+  Future<void> updateSheets() async {
+    var url = Uri.parse('${dotenv.env['API_URL']}/user/${globals.loggedUser.id}');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      var user = User.fromJson(jsonDecode(response.body));
+      print(response.body);
+      globals.loggedUser = user;
+      setState(() {
+        sheetList = [];
+        sheetToTile();
+      });
+    }
+  }
+}
+
+class NewSheetButton extends StatelessWidget {
+  String text = "";
+  IconData symbol;
+  Color color;
+
+  NewSheetButton(
+      {super.key,
+      required this.text,
+      required this.symbol,
+      required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(backgroundColor: color),
+      onPressed: () async {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => EditSheetPage(false)));
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(text,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 25, fontFamily: 'Revol')),
+          const SizedBox(
+            width: 5,
+          ),
+          Icon(
+            symbol,
+            color: Colors.white,
+          ),
+        ],
+      ),
+    );
   }
 }
