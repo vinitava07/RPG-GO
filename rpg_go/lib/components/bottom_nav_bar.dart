@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/profile.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
-  final int _currentIndex = 0;
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+  //final int _currentIndex = 0;
   final List<Widget> body = const [
     Icon(Icons.home),
     Icon(Icons.menu),
     Icon(Icons.person),
   ];
+}
 
+class _BottomNavBarState extends State<BottomNavBar>{
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     Color mainColor = const Color.fromRGBO(0, 75, 91, 1);
+    //Color homeIconColor = _currentIndex == 0 ? Colors.blue : Colors.white;
+    //Color profileIconColor = _currentIndex == 1 ? Colors.blue : Colors.white;
     return BottomAppBar(
       height: 70,
       padding: const EdgeInsets.only(left: 10.0, right: 10.0),
@@ -27,6 +34,9 @@ class BottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                   onPressed: () {
+                    setState(() {
+                      _currentIndex = 0;
+                    });
                     const newRouteName = "/home_revival";
                     bool isNewRouteSameAsCurrent = false;
                     //print(ModalRoute.of(context)?.settings.name);
@@ -49,18 +59,30 @@ class BottomNavBar extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.home,
-                    size: 40,
+                    size: 30,
+                    color: Colors.white,
+                    //size: _currentIndex == 0 ? 40 : 30,
+                    //color: homeIconColor,
                   )),
               const SizedBox(
                 width: 30,
               ),
               IconButton(
-                  onPressed: () {Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Profile()));},
+                  onPressed: () {
+                    setState(() {
+                        _currentIndex = 1;
+                    });
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Profile()));
+                  },
                   icon: const Icon(
                     Icons.person,
-                    size: 40,
-                  ))
+                    size: 30,
+                    color: Colors.white,
+                    //size: _currentIndex == 1 ? 40 : 30,
+                    //color: profileIconColor,
+                  )
+              )
             ],
           ),
         ),

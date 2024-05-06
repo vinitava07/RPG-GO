@@ -3,10 +3,12 @@ import 'package:rpg_go/pages/sheet_page.dart';
 
 class RoomTile extends StatefulWidget {
   final String nomeSala;
+  final int sheetId;
   final String situacao;
 
-  const RoomTile(String nome, String situ, {super.key})
+  const RoomTile(String nome, int id, String situ, {super.key})
       : nomeSala = nome,
+        sheetId = id,
         situacao = situ;
   @override
   State<RoomTile> createState() => _RoomTileState();
@@ -15,6 +17,7 @@ class RoomTile extends StatefulWidget {
 class _RoomTileState extends State<RoomTile> {
   @override
   Widget build(BuildContext context) {
+    int sheetId = widget.sheetId;
     return Card(
       color: const Color.fromRGBO(0, 75, 91, 0.9),
       child: ListTile(
@@ -32,7 +35,7 @@ class _RoomTileState extends State<RoomTile> {
         onTap: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) {
-                  final sId = 0; // ou qualquer outra lógica para calcular sheetId
+                  final int sId = sheetId;
                   return SheetPage(sId);
                 }));
         },
