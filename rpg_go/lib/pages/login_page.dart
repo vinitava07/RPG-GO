@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
-import 'package:rpg_go/models/globals.dart';
+import 'package:rpg_go/models/sqlite_model.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:sqflite/sqflite.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({
@@ -95,7 +96,6 @@ class LoginPage extends StatelessWidget {
                           onPressed: () async {
                             if (await loginUser(_controllerName.text,
                                 _controllerPassword.text)) {
-                              print("EBA");
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -150,6 +150,16 @@ class LoginPage extends StatelessWidget {
       // then parse the JSON.
       print(response.body);
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      Database db = await SQLiteModel.instance.database;
+      print('senha: ${globals.loggedUser.password}');
+      await db.insert('user', {
+        'name': globals.loggedUser.name,
+        'password': globals.loggedUser.password});  //insert to local database
+      List<Map<String, dynamic>> userRows = await db.query('user');
+      int savedId= userRows.first['id'];
+      String savedName = userRows.first['name'];
+      String savedPassword = userRows.first['password'] ?? '';
+      print('$savedName is logged with id: $savedId and password: $password on local DataBase!');
       return true;
     } else {
       // If the server did not return a 201 CREATED response,
