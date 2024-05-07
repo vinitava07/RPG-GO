@@ -3,12 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/models/globals.dart';
+import 'package:rpg_go/models/sqlite_model.dart';
 import 'package:rpg_go/pages/home_revival.dart';
 import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:sqflite/sqflite.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({
@@ -150,6 +152,11 @@ class LoginPage extends StatelessWidget {
       // then parse the JSON.
       print(response.body);
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      Database db = await SQLiteModel.instance.database;
+      await db.insert('user', {
+        'name': globals.loggedUser.name});
+      String savedUser = 'TESTE';//await db.query('user', where: 'name: ?', whereArgs: ['A']);
+      print('SQL SALVO: $savedUser');
       return true;
     } else {
       // If the server did not return a 201 CREATED response,
