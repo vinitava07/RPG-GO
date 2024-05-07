@@ -26,6 +26,7 @@ class UserRepository{
     db = await SQLiteModel.instance.database;
     db.update('user', {
       'name': globals.loggedUser.name,
+      'password': globals.loggedUser.password,
     });
     _user.name = globals.loggedUser.name;
   }
