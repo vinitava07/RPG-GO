@@ -90,7 +90,7 @@ class LoginPage extends StatelessWidget {
                               style: TextStyle(color: Colors.black))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 110, top: 3),
+                      padding: const EdgeInsets.only(left: 75, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
                             if (await loginUser(_controllerName.text,
@@ -182,7 +182,7 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
           setState(() {});
         },
         decoration: InputDecoration(
-          hintText: 'Password',
+          hintText: 'Senha',
           fillColor: Colors.white,
           filled: true,
           border: OutlineInputBorder(),

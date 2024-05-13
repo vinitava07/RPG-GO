@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rpg_go/pages/master_room.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
 
 class RoomTile extends StatefulWidget {
@@ -33,8 +34,12 @@ class _RoomTileState extends State<RoomTile> {
         ),
         dense: false,
         onTap: () {
+          
           Navigator.push(context,
               MaterialPageRoute(builder: (context) {
+                if (widget.situacao == 'Mestre') {
+                  return MasterRoom();
+                }
                   final int sId = sheetId;
                   return SheetPage(sId);
                 }));

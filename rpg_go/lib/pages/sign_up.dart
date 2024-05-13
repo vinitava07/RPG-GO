@@ -44,7 +44,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     child: Image.asset('assets/images/logo.png')),
                 const SizedBox(height: 50),
-                const Text('Welcome to RPG:GO!',
+                const Text('Bem-vindo ao RPG:GO!',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -68,7 +68,7 @@ class SignUpPage extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 20.0), // Adiciona padding de 16 pixels à esquerda
                   child: const Text(
-                    "Password",
+                    "Senha",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -81,14 +81,14 @@ class SignUpPage extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 20.0), // Adiciona padding de 16 pixels à esquerda
                   child: const Text(
-                    "Repeat Password",
+                    "Senha novamente",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 MyPasswordField(
                   controller: _controllerConfirmPassword,
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -105,7 +105,7 @@ class SignUpPage extends StatelessWidget {
                               style: TextStyle(color: Colors.black))),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 80, top: 3),
+                      padding: const EdgeInsets.only(left: 35, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
                             if (fieldCheck()) {

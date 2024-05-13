@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/player_tile.dart';
 import 'package:rpg_go/components/room_header.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class MasterRoom extends StatelessWidget {
   const MasterRoom({super.key});
@@ -35,17 +36,17 @@ class MasterRoom extends StatelessWidget {
       ),
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: masterRoomButton(),
+      floatingActionButton: masterRoomButton(context),
       bottomNavigationBar: const BottomNavBar(),
     );
   }
 
-  FloatingActionButton masterRoomButton() {
+  FloatingActionButton masterRoomButton(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
+        _showMyDialog(context);
         //print("oi");
       },
-      
       backgroundColor: const Color.fromRGBO(0, 75, 91, 1),
       shape: RoundedRectangleBorder(
           side: const BorderSide(color: Colors.white),
@@ -56,4 +57,38 @@ class MasterRoom extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _showMyDialog(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('QR Code'),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              QrImageView(
+                data: '1234567890', //qr code info
+                version: QrVersions.auto,
+                size: 200.0,
+              ),
+              // Text('This is a demo alert dialog.'),
+              // Text('Would you like to approve of this message?'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Fechar'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

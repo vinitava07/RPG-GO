@@ -6,6 +6,7 @@ import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/player_tile.dart';
 import 'package:rpg_go/components/room_header.dart';
+import 'package:rpg_go/pages/login_page.dart';
 import 'package:rpg_go/pages/profile_settings.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
@@ -74,6 +75,13 @@ class _ProfileState extends State<Profile> {
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               const ProfileSettings()));
+                                },
+                                onLongPress: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LoginPage()));
                                 },
                                 child: const Icon(
                                   Icons.settings,
