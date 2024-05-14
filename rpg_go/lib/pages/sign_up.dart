@@ -164,8 +164,8 @@ class SignUpPage extends StatelessWidget {
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       return true;
     } else {
+      throw Exception('Requisition Failed - Login.');
       return false;
-      // throw Exception('Requisition Failed - Login.');
     }
   }
 }
