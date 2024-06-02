@@ -5,19 +5,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:rpg_go/pages/select_sheet.dart';
 // import 'package:rpg_go/models/User.dart';
 // import 'package:rpg_go/pages/home_revival.dart';
-// import 'package:rpg_go/models/globals.dart' as globals;  
+// import 'package:rpg_go/models/globals.dart' as globals;
 // import 'package:http/http.dart' as http;
 
-class QRViewExample extends StatefulWidget {
-  const QRViewExample({Key? key}) : super(key: key);
+class QRViewScan extends StatefulWidget {
+  const QRViewScan({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _QRViewExampleState();
+  State<StatefulWidget> createState() => _QRViewScanState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> {
+class _QRViewScanState extends State<QRViewScan> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -50,7 +51,7 @@ class _QRViewExampleState extends State<QRViewExample> {
                     Text(
                         'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
                   else
-                    const Text('Scan a code'),
+                    const Text('Escaneie algum código'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,6 +81,10 @@ class _QRViewExampleState extends State<QRViewExample> {
                               future: controller?.getCameraInfo(),
                               builder: (context, snapshot) {
                                 if (snapshot.data != null) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectSheet()));
                                   return Text(
                                       'Camera facing ${describeEnum(snapshot.data!)}');
                                 } else {

@@ -13,7 +13,7 @@ class BottomNavBar extends StatefulWidget {
   ];
 }
 
-class _BottomNavBarState extends State<BottomNavBar>{
+class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -43,12 +43,6 @@ class _BottomNavBarState extends State<BottomNavBar>{
                     if (ModalRoute.of(context)?.settings.name == newRouteName) {
                       isNewRouteSameAsCurrent = true;
                     }
-                    // Navigator.popUntil(context, (route) {
-                    //   if (route.settings.name == newRouteName) {
-                    //     isNewRouteSameAsCurrent = true;
-                    //   }
-                    //   return true;
-                    // });
 
                     if (!isNewRouteSameAsCurrent) {
                       Navigator.pushNamedAndRemoveUntil(
@@ -70,10 +64,21 @@ class _BottomNavBarState extends State<BottomNavBar>{
               IconButton(
                   onPressed: () {
                     setState(() {
-                        _currentIndex = 1;
+                      _currentIndex = 1;
                     });
-                    Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Profile()));
+                    const newRouteName = '/profile';
+                    bool isNewRouteSameAsCurrent = false;
+                    //print(ModalRoute.of(context)?.settings.name);
+                    if (ModalRoute.of(context)?.settings.name == newRouteName) {
+                      isNewRouteSameAsCurrent = true;
+                    }
+
+                    if (!isNewRouteSameAsCurrent) {
+                      Navigator.pushNamedAndRemoveUntil(context, '/profile',
+                          ((route) {
+                        return route.settings.name == newRouteName;
+                      }));
+                    }
                   },
                   icon: const Icon(
                     Icons.person,
@@ -81,8 +86,7 @@ class _BottomNavBarState extends State<BottomNavBar>{
                     color: Colors.white,
                     //size: _currentIndex == 1 ? 40 : 30,
                     //color: profileIconColor,
-                  )
-              )
+                  ))
             ],
           ),
         ),

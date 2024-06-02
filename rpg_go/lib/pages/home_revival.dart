@@ -17,6 +17,7 @@ class _HomeRevivalState extends State<HomeRevival> {
 
   @override
   Widget build(BuildContext context) {
+    roomList = [];
     roomToTile();
     return Scaffold(
       backgroundColor: const Color.fromRGBO(35, 37, 38, 1),

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/master_room.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class RoomTile extends StatefulWidget {
   final String nomeSala;
-  final int sheetId;
+  final int index;
   final String situacao;
 
   const RoomTile(String nome, int id, String situ, {super.key})
       : nomeSala = nome,
-        sheetId = id,
+        index = id,
         situacao = situ;
   @override
   State<RoomTile> createState() => _RoomTileState();
@@ -18,7 +19,7 @@ class RoomTile extends StatefulWidget {
 class _RoomTileState extends State<RoomTile> {
   @override
   Widget build(BuildContext context) {
-    int sheetId = widget.sheetId;
+    int indexPos = widget.index;
     return Card(
       color: const Color.fromRGBO(0, 75, 91, 0.9),
       child: ListTile(
@@ -34,15 +35,15 @@ class _RoomTileState extends State<RoomTile> {
         ),
         dense: false,
         onTap: () {
-          
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) {
-                if (widget.situacao == 'Mestre') {
-                  return MasterRoom();
-                }
-                  final int sId = sheetId;
-                  return SheetPage(sId);
-                }));
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            if (widget.situacao == 'Mestre') {
+              final int tId = globals.loggedUser.tables![indexPos].id;
+              final String name = globals.loggedUser.tables![indexPos].name;
+              return MasterRoom(name: name, id: tId);
+            }
+            final int sId = indexPos;
+            return SheetPage(sId);
+          }));
         },
         contentPadding: const EdgeInsets.all(30),
         trailing: ClipRRect(
@@ -50,10 +51,9 @@ class _RoomTileState extends State<RoomTile> {
           child: Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
             color: widget.situacao == 'Jogador'
-                ? const Color.fromARGB(180, 66, 214, 223) 
+                ? const Color.fromARGB(180, 66, 214, 223)
                 : widget.situacao == 'Mestre'
-                    ? const Color.fromARGB(
-                        180, 138, 149, 251)
+                    ? const Color.fromARGB(180, 138, 149, 251)
                     : Colors.red, // Outras situações têm cor vermelha
             child: Text(
               widget.situacao,
