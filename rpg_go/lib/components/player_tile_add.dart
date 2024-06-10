@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
 
-class PlayerTile extends StatelessWidget {
+class PlayerTileAdd extends StatelessWidget {
   final String playerName;
   final int sheetId;
-  const PlayerTile(String name, int id, {super.key}) : playerName = name, sheetId = id;
+  final int roomId;
+  const PlayerTileAdd(String name, int id, {super.key, required this.roomId}) : playerName = name, sheetId = id;
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +28,11 @@ class PlayerTile extends StatelessWidget {
           Navigator.push(context,
                 MaterialPageRoute(builder: (context) {
                   final int sId = sheetId; // ou qualquer outra lógica para calcular sheetId
-                  return SheetPage(sId, bt: ButtonType.editSheet,);
+                  return SheetPage(sId, bt: ButtonType.addSheet, roomId: roomId);
                 }));
         },
         contentPadding: const EdgeInsets.all(30),
-        trailing: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(228, 4, 53, 56)),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => EditSheetPage(true)));
-          },
-          child: const Icon(
-            Icons.edit,
-            color: Colors.white,
-          ),
-        ),
+        
       ),
     );
   }

@@ -125,7 +125,7 @@ class EditSheetPage extends StatelessWidget {
                               MaterialPageRoute(builder: (context) {
                             final sId =
                                 0; // ou qualquer outra lógica para calcular sheetId
-                            return SheetPage(sId);
+                            return SheetPage(sId, bt: ButtonType.editSheet,);
                           }));
                             //updateSheet();
                           } else {

@@ -65,7 +65,7 @@ class PlayerButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SelectSheet()));
+            context, MaterialPageRoute(builder: (context) => QRViewScan()));
       },
       style: ElevatedButton.styleFrom(
           backgroundColor: Colors.blueGrey,

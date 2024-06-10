@@ -9,9 +9,17 @@ import 'package:rpg_go/models/Sheet.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
 
+enum ButtonType{
+  addSheet,
+  editSheet;
+}
+
 class SheetPage extends StatelessWidget {
   final int sheetId;
-  const SheetPage(int id, {super.key}) : sheetId = id;
+  final ButtonType bt;
+  final int? roomId;
+
+  const SheetPage(int id, {super.key, required this.bt, this.roomId}) : sheetId = id;
 
   @override
   Widget build(BuildContext context) {
@@ -99,10 +107,13 @@ class SheetPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(padding: const EdgeInsets.only(right: 25, top: 3),
-                    child: ElevatedButton(onPressed: (){
+                    child: bt == ButtonType.editSheet ? ElevatedButton(onPressed: (){
                       Navigator.push(context,
                       MaterialPageRoute(builder: (context) => EditSheetPage(true)));
-                    }, child: const Text('EDIT')),
+                    }, child: const Text('EDIT')): ElevatedButton(onPressed: (){
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => EditSheetPage(false)));
+                    }, child: const Text('ADD SHEET')),
                     )
                 ],)
               ],

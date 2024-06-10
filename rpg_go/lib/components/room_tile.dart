@@ -42,7 +42,7 @@ class _RoomTileState extends State<RoomTile> {
               return MasterRoom(name: name, id: tId);
             }
             final int sId = indexPos;
-            return SheetPage(sId);
+            return SheetPage(sId,bt: ButtonType.editSheet,);
           }));
         },
         contentPadding: const EdgeInsets.all(30),

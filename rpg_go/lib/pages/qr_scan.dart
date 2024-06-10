@@ -81,10 +81,10 @@ class _QRViewScanState extends State<QRViewScan> {
                               future: controller?.getCameraInfo(),
                               builder: (context, snapshot) {
                                 if (snapshot.data != null) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SelectSheet()));
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => SelectSheet()));
                                   return Text(
                                       'Camera facing ${describeEnum(snapshot.data!)}');
                                 } else {
@@ -156,9 +156,8 @@ class _QRViewScanState extends State<QRViewScan> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => SelectSheet(code: int.parse(scanData.code!),)));
     });
   }
 
