@@ -168,7 +168,6 @@ class _TableCreationState extends State<TableCreation> {
       var table = RpgTable.fromJson(jsonDecode(response.body));
       tableCreateId = table.id;
       updateUser();
-      print(response.body);
       return true;
     } else {
       throw Exception('Requisition Failed - CREATING TABLE.');
@@ -182,7 +181,6 @@ class _TableCreationState extends State<TableCreation> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var user = User.fromJson(jsonDecode(response.body));
-      print(response.body);
       globals.loggedUser = user;
     } else {
       throw Exception('Requisition Failed - GET USER.');

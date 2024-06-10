@@ -41,8 +41,11 @@ class _RoomTileState extends State<RoomTile> {
               final String name = globals.loggedUser.tables![indexPos].name;
               return MasterRoom(name: name, id: tId);
             }
-            final int sId = indexPos;
-            return SheetPage(sId,bt: ButtonType.editSheet,);
+            final int sId = globals.loggedUser.sheets![indexPos].id;
+            return SheetPage(
+              sheetId: sId,
+              bt: ButtonType.editSheet,
+            );
           }));
         },
         contentPadding: const EdgeInsets.all(30),

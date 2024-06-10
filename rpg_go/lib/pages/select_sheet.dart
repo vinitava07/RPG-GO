@@ -54,7 +54,11 @@ class _SelectSheetState extends State<SelectSheet> {
   void sheetToTile() {
     int index = 0;
     for (var sheet in globals.loggedUser.sheets!) {
-      sheetList?.add(PlayerTileAdd(sheet.name, index, roomId: widget.code,));
+      sheetList?.add(PlayerTileAdd(
+        sheet.name,
+        globals.loggedUser.sheets![index].id,
+        tableId: widget.code,
+      ));
       index++;
     }
   }

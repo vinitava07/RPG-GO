@@ -14,7 +14,7 @@ class HomeRevival extends StatefulWidget {
 
 class _HomeRevivalState extends State<HomeRevival> {
   List<RoomTile>? roomList = [];
-
+  int listSize = 0;
   @override
   Widget build(BuildContext context) {
     roomList = [];
@@ -68,8 +68,9 @@ class _HomeRevivalState extends State<HomeRevival> {
       roomList?.add(RoomTile(room.tableName, index, "Jogador"));
       index++;
     }
+    listSize = roomList!.length;
     for (var table in globals.loggedUser!.tables!) {
-      roomList?.add(RoomTile(table.name, index, "Mestre"));
+      roomList?.add(RoomTile(table.name, index - listSize, "Mestre"));
       index++;
     }
   }

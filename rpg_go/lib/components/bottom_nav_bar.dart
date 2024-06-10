@@ -39,7 +39,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     });
                     const newRouteName = "/home_revival";
                     bool isNewRouteSameAsCurrent = false;
-                    //print(ModalRoute.of(context)?.settings.name);
                     if (ModalRoute.of(context)?.settings.name == newRouteName) {
                       isNewRouteSameAsCurrent = true;
                     }
@@ -68,7 +67,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     });
                     const newRouteName = '/profile';
                     bool isNewRouteSameAsCurrent = false;
-                    //print(ModalRoute.of(context)?.settings.name);
                     if (ModalRoute.of(context)?.settings.name == newRouteName) {
                       isNewRouteSameAsCurrent = true;
                     }

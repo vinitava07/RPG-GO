@@ -165,7 +165,6 @@ class _ProfileState extends State<Profile> {
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var user = User.fromJson(jsonDecode(response.body));
-      print(response.body);
       globals.loggedUser = user;
       setState(() {
         sheetList = [];

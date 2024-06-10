@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/pages/edit_sheet_page.dart';
 import 'package:rpg_go/pages/sheet_page.dart';
+import 'package:rpg_go/models/globals.dart' as globals;
 
 class PlayerTileAdd extends StatelessWidget {
   final String playerName;
   final int sheetId;
-  final int roomId;
-  const PlayerTileAdd(String name, int id, {super.key, required this.roomId}) : playerName = name, sheetId = id;
+  final int tableId;
+  const PlayerTileAdd(String name, int id, {super.key, required this.tableId})
+      : playerName = name,
+        sheetId = id;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +28,14 @@ class PlayerTileAdd extends StatelessWidget {
         ),
         dense: false,
         onTap: () {
-          Navigator.push(context,
-                MaterialPageRoute(builder: (context) {
-                  final int sId = sheetId; // ou qualquer outra lógica para calcular sheetId
-                  return SheetPage(sId, bt: ButtonType.addSheet, roomId: roomId);
-                }));
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            int sId = sheetId;
+            // ou qualquer outra lógica para calcular sheetId
+            return SheetPage(
+                sheetId: sId, bt: ButtonType.addSheet, tableId: tableId);
+          }));
         },
         contentPadding: const EdgeInsets.all(30),
-        
       ),
     );
   }

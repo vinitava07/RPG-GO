@@ -148,10 +148,10 @@ class LoginPage extends StatelessWidget {
     if (response.statusCode == 200) {
       // If the server did return a 200 CREATED response,
       // then parse the JSON.
-      print(response.body);
+      // print(response.body);
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       Database db = await SQLiteModel.instance.database;
-      print('senha: ${globals.loggedUser.password}');
+      // print('senha: ${globals.loggedUser.password}');
       await db.insert('user', {
         'name': globals.loggedUser.name,
         'password': globals.loggedUser.password});  //insert to local database
@@ -159,7 +159,7 @@ class LoginPage extends StatelessWidget {
       int savedId= userRows.first['id'];
       String savedName = userRows.first['name'];
       String savedPassword = userRows.first['password'] ?? '';
-      print('$savedName is logged with id: $savedId and password: $password on local DataBase!');
+      // print('$savedName is logged with id: $savedId and password: $password on local DataBase!');
       return true;
     } else {
       // If the server did not return a 201 CREATED response,

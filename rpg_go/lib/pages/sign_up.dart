@@ -160,7 +160,6 @@ class SignUpPage extends StatelessWidget {
     );
 
     if (response.statusCode == 201) {
-      print(response.body);
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       return true;
     } else {

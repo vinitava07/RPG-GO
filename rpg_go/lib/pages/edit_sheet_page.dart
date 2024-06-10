@@ -121,19 +121,22 @@ class EditSheetPage extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () async {
                           if (isEditing) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            final sId =
-                                0; // ou qualquer outra lógica para calcular sheetId
-                            return SheetPage(sId, bt: ButtonType.editSheet,);
-                          }));
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              final sId =
+                                  0; // ou qualquer outra lógica para calcular sheetId
+                              return SheetPage(
+                                sheetId: sId,
+                                bt: ButtonType.editSheet,
+                              );
+                            }));
                             //updateSheet();
                           } else {
                             createSheet();
                             Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const Profile();
-                          }));
+                                MaterialPageRoute(builder: (context) {
+                              return const Profile();
+                            }));
                           }
                         },
                         child: const Text('SAVE')),
@@ -171,7 +174,6 @@ class EditSheetPage extends StatelessWidget {
 
     if (response.statusCode == 201) {
       // then parse the JSON.
-      print(response.body);
       return true;
     } else {
       // then throw an exception.

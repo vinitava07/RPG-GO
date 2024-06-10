@@ -156,8 +156,13 @@ class _QRViewScanState extends State<QRViewScan> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
+      controller.pauseCamera();
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SelectSheet(code: int.parse(scanData.code!),)));
+          context,
+          MaterialPageRoute(
+              builder: (context) => SelectSheet(
+                    code: int.parse(scanData.code!),
+                  )));
     });
   }
 
