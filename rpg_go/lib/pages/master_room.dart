@@ -5,7 +5,11 @@ import 'package:rpg_go/components/room_header.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class MasterRoom extends StatelessWidget {
-  const MasterRoom({super.key});
+  int roomId;
+  String tableName = "";
+  MasterRoom({required String name, required int id, super.key})
+      : roomId = id,
+        tableName = name;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class MasterRoom extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              const RoomHeader("Nome do RPG"),
+              RoomHeader(tableName),
               const Text("Fichas da mesa:",
                   style: TextStyle(
                       color: Colors.white, fontSize: 32, fontFamily: 'Revol')),
@@ -57,38 +61,38 @@ class MasterRoom extends StatelessWidget {
       ),
     );
   }
-}
 
-Future<void> _showMyDialog(BuildContext context) async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('QR Code'),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              QrImageView(
-                data: '1234567890', //qr code info
-                version: QrVersions.auto,
-                size: 200.0,
-              ),
-              // Text('This is a demo alert dialog.'),
-              // Text('Would you like to approve of this message?'),
-            ],
+  Future<void> _showMyDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('QR Code'),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                QrImageView(
+                  data: roomId.toString(), //qr code info
+                  version: QrVersions.auto,
+                  size: 200.0,
+                ),
+                // Text('This is a demo alert dialog.'),
+                // Text('Would you like to approve of this message?'),
+              ],
+            ),
           ),
-        ),
-        actions: <Widget>[
-          TextButton(
-            child: const Text('Fechar'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Fechar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

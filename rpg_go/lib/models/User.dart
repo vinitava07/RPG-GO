@@ -1,4 +1,4 @@
-import 'package:rpg_go/models/Table.dart';
+import 'package:rpg_go/models/RpgTable.dart';
 import 'package:rpg_go/models/Room.dart';
 import 'package:rpg_go/models/Sheet.dart';
 
@@ -7,7 +7,7 @@ class User {
   String name;
   String password;
   List<Sheet>? sheets = [];
-  List<Table>? tables = [];
+  List<RpgTable>? tables = [];
   List<Room>? rooms = [];
 
   User(
@@ -24,14 +24,20 @@ class User {
         name = json['name'],
         password = json['password'],
         rooms = json['rooms'] != null
-            ? List<dynamic>.from(json['rooms']).map((i) => Room.fromJson(i)).toList()
+            ? List<dynamic>.from(json['rooms'])
+                .map((i) => Room.fromJson(i))
+                .toList()
             : List.empty(),
-        tables = json["rpgTableList"] != null ? List<dynamic>.from(json['rpgTableList'])
-            .map((i) => Table.fromJson(i))
-            .toList(): List.empty(),
-        sheets = json["sheets"] != null ? List<dynamic>.from(json['sheets'])
-            .map((i) => Sheet.fromJson(i))
-            .toList(): List.empty();
+        tables = json["rpgTableList"] != null
+            ? List<dynamic>.from(json['rpgTableList'])
+                .map((i) => RpgTable.fromJson(i))
+                .toList()
+            : List.empty(),
+        sheets = json["sheets"] != null
+            ? List<dynamic>.from(json['sheets'])
+                .map((i) => Sheet.fromJson(i))
+                .toList()
+            : List.empty();
 
   Map<String, dynamic> toJson() => {
         'id': id,
