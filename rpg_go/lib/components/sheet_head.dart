@@ -1,11 +1,19 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rpg_go/models/Sheet.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:http/http.dart' as http;
 
 class SheetHead extends StatelessWidget {
   final int sheetId;
-  const SheetHead(int id,{Key? key}) : sheetId = id,super(key: key);
+  const SheetHead(int id, {Key? key})
+      : sheetId = id,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +40,30 @@ class SheetHead extends StatelessWidget {
     );
   }
 
+  // FutureOr<Sheet> getSheet() async {
+  //   var url = Uri.parse('${dotenv.env['API_URL']}/sheet/${sheetId}');
+  //   var response = await http.get(url);
+  //   if (response.statusCode == 200) {
+  //     Sheet rpgTable = Sheet.fromJson(jsonDecode(response.body));
+  //   } else {
+  //     throw Exception("a");
+  //   }
+  // }
+
   Widget _buildInfoColumn() {
-    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
+    Sheet thisSheet = const Sheet(
+        id: 0,
+        name: "name",
+        playerClass: "playerClass",
+        race: "race",
+        level: 0,
+        spells: "spells");
+
+    for (var sheet in globals.loggedUser.sheets!) {
+      if (sheet.id == sheetId) {
+        thisSheet = sheet;
+      }
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,8 +75,8 @@ class SheetHead extends StatelessWidget {
             textStyle: const TextStyle(fontSize: 25, color: Colors.white),
           ),
         ),
-        _buildInfoText("Class: ${thisSheet.playerClass}"),//${specificSheet}"),
-        _buildInfoText("Race: ${thisSheet.race}"),//${specificSheet}"),
+        _buildInfoText("Class: ${thisSheet.playerClass}"), //${specificSheet}"),
+        _buildInfoText("Race: ${thisSheet.race}"), //${specificSheet}"),
       ],
     );
   }
@@ -55,13 +85,27 @@ class SheetHead extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.almendra(
-        textStyle: const TextStyle(fontSize: 17, color: Colors.white, height: 1),
+        textStyle:
+            const TextStyle(fontSize: 17, color: Colors.white, height: 1),
       ),
     );
   }
 
   Widget _buildLevelContainer() {
-    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
+    // Sheet thisSheet = globals.loggedUser.sheets![sheetId];
+    Sheet thisSheet = Sheet(
+        id: 0,
+        name: "name",
+        playerClass: "playerClass",
+        race: "race",
+        level: 0,
+        spells: "spells");
+    for (var sheet in globals.loggedUser.sheets!) {
+      if (sheet.id == sheetId) {
+        thisSheet = sheet;
+      }
+    }
+
     return Container(
       width: 70,
       height: 70,

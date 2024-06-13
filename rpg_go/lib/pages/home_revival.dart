@@ -64,12 +64,12 @@ class _HomeRevivalState extends State<HomeRevival> {
 
   void roomToTile() {
     int index = 0;
-    for (var room in globals.loggedUser!.rooms!) {
+    for (var room in globals.loggedUser.rooms!) {
       roomList?.add(RoomTile(room.tableName, index, "Jogador"));
       index++;
     }
     listSize = roomList!.length;
-    for (var table in globals.loggedUser!.tables!) {
+    for (var table in globals.loggedUser.tables!) {
       roomList?.add(RoomTile(table.name, index - listSize, "Mestre"));
       index++;
     }
