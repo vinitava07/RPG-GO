@@ -88,7 +88,7 @@ class _EditSheetPageState extends State<EditSheetPage> {
                     ),
                   ],
                 ),
-                child: const EditSheetStats(),
+                child: EditSheetStats(sheet),
               ),
               const SizedBox(height: 20),
               Container(
@@ -106,7 +106,7 @@ class _EditSheetPageState extends State<EditSheetPage> {
                     ),
                   ],
                 ),
-                child: const EditSheetAttributes(),
+                child: EditSheetAttributes(sheet),
               ),
               const SizedBox(height: 20),
               Container(
@@ -175,21 +175,12 @@ class _EditSheetPageState extends State<EditSheetPage> {
   }
 
   Future<bool> updateSheet(int userId) async {
-    final body = {
-      "id": sheet.id,
-      "name": sheet.name,
-      "playerClass": sheet.playerClass,
-      "race": sheet.race,
-      "playerLevel": sheet.level,
-      "spells": "Magias do Jogador"
-    };
-
     final response = await http.put(
       Uri.parse("${dotenv.env['API_URL']!}sheet?user_id=$userId"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(body),
+      body: jsonEncode(sheet.toJson(withId: true)),
     );
     return response.statusCode == 201;
   }
@@ -200,7 +191,7 @@ class _EditSheetPageState extends State<EditSheetPage> {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode({'name': sheet.name, 'playerClass': sheet.playerClass, 'race': sheet.race, 'playerLevel': sheet.level, 'spells': 'Magias do Jogador'}),
+      body: jsonEncode(sheet.toJson(withId: false)),
     );
 
     if (response.statusCode == 201) {

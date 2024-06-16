@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
-import 'package:rpg_go/components/sheet_head.dart';
 import 'package:rpg_go/components/sheet_stats.dart';
 import 'package:rpg_go/components/sheet_attributes.dart';
-import 'package:rpg_go/components/sheet_options.dart';
 import 'package:rpg_go/components/dropdown_list.dart';
 
 class AttackPage extends StatelessWidget {
@@ -54,7 +52,7 @@ class AttackPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const SheetStats(),
+                  // child: const SheetStats(),
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -72,7 +70,7 @@ class AttackPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const SheetAttributes(),
+                  // child: const SheetAttributes(),
                 ),
                 const SizedBox(height: 20),
                 Container(

@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 100),
+                                constraints: const BoxConstraints(maxWidth: 140),
                                 child: Text(
                                   "Olá, ${globals.loggedUser.name}!",
                                   style: const TextStyle(

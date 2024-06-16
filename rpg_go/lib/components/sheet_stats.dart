@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rpg_go/models/Sheet.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
 
 class SheetStats extends StatelessWidget {
-  const SheetStats({Key? key}) : super(key: key);
+  final Sheet sheet;
+  const SheetStats(this.sheet,{super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _buildStatColumn("CA", "16", 0.7),
-        const SizedBox(width: 30),
-        _buildStatColumn("Movement", "30", 0.5),
-        const SizedBox(width: 30),
+        _buildStatColumn("Class Armor", sheet.armorClass.toString(), 0.7),
+        _buildStatColumn("Movement", sheet.movement.toString(), 0.5),
         _buildHPColumn(),
       ],
     );
@@ -21,9 +22,7 @@ class SheetStats extends StatelessWidget {
 
   Widget _buildStatColumn(String title, String value, double height) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(height: 10),
         Text(
           title,
           style: GoogleFonts.almendra(
@@ -60,11 +59,11 @@ class SheetStats extends StatelessWidget {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                "10/10",
+                sheet.health.toString(),
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ],
           ),

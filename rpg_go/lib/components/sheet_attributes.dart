@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rpg_go/models/Sheet.dart';
 
 class SheetAttributes extends StatelessWidget {
-  const SheetAttributes({Key? key}) : super(key: key);
+  final Sheet sheet;
+  const SheetAttributes(this.sheet, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,18 +12,18 @@ class SheetAttributes extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildAttributeColumn([
-          Attribute(name: "STR", value: "9(-1)"),
-          Attribute(name: "DEX", value: "12(+1)")
+          Attribute(name: "STR", value: sheet.strength.toString()),
+          Attribute(name: "DEX", value: sheet.dexterity.toString())
         ]),
         const SizedBox(width: 30),
         _buildAttributeColumn([
-          Attribute(name: "CON", value: "11(0)"),
-          Attribute(name: "INT", value: "15(+2)")
+          Attribute(name: "CON", value: sheet.constitution.toString()),
+          Attribute(name: "INT", value: sheet.intelligence.toString())
         ]),
         const SizedBox(width: 30),
         _buildAttributeColumn([
-          Attribute(name: "WIS", value: "12(+1)"),
-          Attribute(name: "CHA", value: "15(+2)")
+          Attribute(name: "WIS", value: sheet.wisdom.toString()),
+          Attribute(name: "CHA", value: sheet.charisma.toString())
         ]),
       ],
     );
@@ -49,7 +51,7 @@ class SheetAttributes extends StatelessWidget {
                             textStyle: const TextStyle(
                                 fontSize: 17, color: Colors.white)),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         attribute.value,
                         style: GoogleFonts.almendra(
