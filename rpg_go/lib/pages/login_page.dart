@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/models/sqlite_model.dart';
 import 'package:rpg_go/pages/home_revival.dart';
+import 'package:rpg_go/pages/loading_page.dart';
 import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:http/http.dart' as http;
@@ -11,10 +12,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
 import 'package:sqflite/sqflite.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({
-    super.key,
-  });
+class LoginPage extends StatefulWidget{
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool isLoading = false;
   User? user;
   final _controllerName = TextEditingController();
   final _controllerPassword = TextEditingController();
@@ -23,10 +26,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
-        body: SingleChildScrollView(
-          child: SafeArea(
-              child: Center(
-            child: (Column(
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: isLoading ? LoadingPage() :(Column(
               children: [
                 const SizedBox(height: 50),
                 Container(
@@ -94,6 +97,7 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 75, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
+                            setState(() => isLoading = true);
                             if (await loginUser(_controllerName.text,
                                 _controllerPassword.text)) {
                               Navigator.push(
@@ -121,6 +125,7 @@ class LoginPage extends StatelessWidget {
                                 },
                               );
                             }
+                            setState(() => isLoading = false);
                           },
                           child: const Text('Login',
                               style: TextStyle(color: Colors.black))),
@@ -129,7 +134,8 @@ class LoginPage extends StatelessWidget {
                 )
               ],
             )),
-          )),
+            ),
+          ),
         ));
   }
 
@@ -146,8 +152,6 @@ class LoginPage extends StatelessWidget {
     );
 
     if (response.statusCode == 200) {
-      // If the server did return a 200 CREATED response,
-      // then parse the JSON.
       // print(response.body);
       globals.loggedUser = User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
       Database db = await SQLiteModel.instance.database;
@@ -162,8 +166,6 @@ class LoginPage extends StatelessWidget {
       // print('$savedName is logged with id: $savedId and password: $password on local DataBase!');
       return true;
     } else {
-      // If the server did not return a 201 CREATED response,
-      // then throw an exception.
       throw Exception('Requisition Failed - Login.');
     }
   }

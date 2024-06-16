@@ -4,6 +4,7 @@ import 'package:rpg_go/components/floating_menu_buttons.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/room_tile.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:rpg_go/pages/loading_page.dart';
 
 class HomeRevival extends StatefulWidget {
   HomeRevival({super.key});
@@ -13,6 +14,7 @@ class HomeRevival extends StatefulWidget {
 }
 
 class _HomeRevivalState extends State<HomeRevival> {
+  bool isLoading = false;
   List<RoomTile>? roomList = [];
   int listSize = 0;
   @override

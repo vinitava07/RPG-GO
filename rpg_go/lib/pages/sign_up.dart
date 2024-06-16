@@ -5,12 +5,17 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:rpg_go/pages/home_revival.dart';
+import 'package:rpg_go/pages/loading_page.dart';
 import 'package:rpg_go/pages/login_page.dart';
-import 'package:rpg_go/models/globals.dart' as globals;  
+import 'package:rpg_go/models/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({super.key});
+class SignUpPage extends StatefulWidget{
+  _SignUpPageState createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  bool isLoading = false;
   User? user;
   final _controllerName = TextEditingController();
   final _controllerPassword = TextEditingController();
@@ -20,10 +25,10 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
-        body: SingleChildScrollView(
-          child: SafeArea(
-              child: Center(
-            child: (Column(
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: isLoading ? LoadingPage() :(Column(
               children: [
                 const SizedBox(height: 50),
                 Container(
@@ -108,6 +113,7 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 35, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
+                            setState(() => isLoading = true);
                             if (fieldCheck()) {
                               if (await signUpUser(_controllerName.text,
                                   _controllerPassword.text)) {
@@ -121,6 +127,7 @@ class SignUpPage extends StatelessWidget {
                                 print("usuario ja existe");
                               }
                             }
+                            setState(() => isLoading = false);
                           },
                           child: const Text('Cadastro',
                               style: TextStyle(color: Colors.black))),
@@ -129,7 +136,8 @@ class SignUpPage extends StatelessWidget {
                 )
               ],
             )),
-          )),
+            ),
+          ),
         ));
   }
 
