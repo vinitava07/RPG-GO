@@ -45,6 +45,6 @@ class User {
         'password': password,
         'rooms': rooms?.map((item) => item.toJson()).toList(),
         'rpgTableList': tables?.map((item) => item.toJson()).toList(),
-        'sheets': sheets?.map((item) => item.toJson()).toList(),
+        'sheets': sheets?.map((item) => item.toJson(withId: true)).toList(),
       };
 }

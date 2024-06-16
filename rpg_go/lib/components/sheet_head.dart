@@ -16,12 +16,18 @@ class SheetHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _buildProfileImage(),
-        const SizedBox(width: 10),
-        _buildInfoColumn(),
-        const SizedBox(width: 70),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildProfileImage(),
+            const SizedBox(width: 10),
+            _buildInfoColumn(),
+          ],
+        ),
         _buildLevelContainer(),
       ],
     );
@@ -51,10 +57,10 @@ class SheetHead extends StatelessWidget {
   Widget _buildInfoColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 20),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 100),
+          constraints: const BoxConstraints(maxWidth: 140),
           child: Text(
             sheet.name,
             style: const TextStyle(
@@ -85,7 +91,7 @@ class SheetHead extends StatelessWidget {
       width: 70,
       height: 70,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 195, 194, 194),
+        color: const Color(0xFF272d36),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(

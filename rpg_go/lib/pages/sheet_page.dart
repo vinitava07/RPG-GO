@@ -45,7 +45,6 @@ class _SheetPageState extends State<SheetPage> {
   }
 
   void getSheet() async {
-    print(widget.sheetId);
     final response = await http.get(
       Uri.parse(
           "${dotenv.env['API_URL']!}sheet/${widget.sheetId}"),
@@ -106,7 +105,7 @@ class _SheetPageState extends State<SheetPage> {
                     ),
                   ],
                 ),
-                child: const SheetStats(),
+                child: SheetStats(sheet),
               ),
               const SizedBox(height: 20),
               Container(
@@ -124,7 +123,7 @@ class _SheetPageState extends State<SheetPage> {
                     ),
                   ],
                 ),
-                child: const SheetAttributes(),
+                child: SheetAttributes(sheet),
               ),
               const SizedBox(height: 20),
               Container(
