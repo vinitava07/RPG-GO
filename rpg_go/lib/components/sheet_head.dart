@@ -1,11 +1,17 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rpg_go/models/Sheet.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
+import 'package:http/http.dart' as http;
 
 class SheetHead extends StatelessWidget {
-  final int sheetId;
-  const SheetHead(int id,{Key? key}) : sheetId = id,super(key: key);
+  final Sheet sheet;
+  const SheetHead(this.sheet, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +38,34 @@ class SheetHead extends StatelessWidget {
     );
   }
 
-  Widget _buildInfoColumn() {
-    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
+  // FutureOr<Sheet> getSheet() async {
+  //   var url = Uri.parse('${dotenv.env['API_URL']}/sheet/${sheetId}');
+  //   var response = await http.get(url);
+  //   if (response.statusCode == 200) {
+  //     Sheet rpgTable = Sheet.fromJson(jsonDecode(response.body));
+  //   } else {
+  //     throw Exception("a");
+  //   }
+  // }
 
+  Widget _buildInfoColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 20),
-        Text(
-          thisSheet.name,
-          style: GoogleFonts.almendra(
-            textStyle: const TextStyle(fontSize: 25, color: Colors.white),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 100),
+          child: Text(
+            sheet.name,
+            style: const TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontFamily: 'Revol'),
+            overflow: TextOverflow.fade,
           ),
         ),
-        _buildInfoText("Class: ${thisSheet.playerClass}"),//${specificSheet}"),
-        _buildInfoText("Race: ${thisSheet.race}"),//${specificSheet}"),
+        _buildInfoText("Class: ${sheet.playerClass}"), //${specificSheet}"),
+        _buildInfoText("Race: ${sheet.race}"), //${specificSheet}"),
       ],
     );
   }
@@ -55,13 +74,13 @@ class SheetHead extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.almendra(
-        textStyle: const TextStyle(fontSize: 17, color: Colors.white, height: 1),
+        textStyle:
+            const TextStyle(fontSize: 17, color: Colors.white, height: 1),
       ),
     );
   }
 
   Widget _buildLevelContainer() {
-    Sheet thisSheet = globals.loggedUser.sheets![sheetId];
     return Container(
       width: 70,
       height: 70,
@@ -72,15 +91,15 @@ class SheetHead extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             "Level",
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           Text(
-            "${thisSheet.level}",
+            "${sheet.level}",
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 28, height: 1),
+            style: const TextStyle(color: Colors.white, fontSize: 28, height: 1),
           ),
         ],
       ),

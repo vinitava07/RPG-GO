@@ -36,7 +36,7 @@ class AttackPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: SheetHead(sheetId),
+                  // child: SheetHead(sheetId),
                 ),
                 const SizedBox(height: 20),
                 Container(

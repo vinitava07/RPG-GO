@@ -1,15 +1,33 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/player_tile.dart';
 import 'package:rpg_go/components/room_header.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:rpg_go/models/Room.dart';
+import 'package:http/http.dart' as http;
+import 'package:rpg_go/models/RpgTable.dart';
 
-class MasterRoom extends StatelessWidget {
+class MasterRoom extends StatefulWidget {
   int roomId;
   String tableName = "";
   MasterRoom({required String name, required int id, super.key})
       : roomId = id,
         tableName = name;
+
+  @override
+  State<MasterRoom> createState() => _MasterRoomState();
+}
+
+class _MasterRoomState extends State<MasterRoom> {
+  List<PlayerTile> players = [];
+  @override
+  void initState() {
+    super.initState();
+    getPlayers();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +37,16 @@ class MasterRoom extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              RoomHeader(tableName),
+              RoomHeader(widget.tableName),
               const Text("Fichas da mesa:",
                   style: TextStyle(
                       color: Colors.white, fontSize: 32, fontFamily: 'Revol')),
               Expanded(
-                child: ListView(
-                  children: const [
-                    PlayerTile("Jogador 1", 1),
-                    PlayerTile("Jogador 2", 2),
-                    PlayerTile("Jogador 3", 3),
-                    PlayerTile("Jogador 4", 4),
-                    PlayerTile("Jogador 5", 5),
-                  ],
+                child: ListView.builder(
+                  itemCount: players!.length,
+                  itemBuilder: (context, index) {
+                    return players![index];
+                  },
                 ),
               )
             ],
@@ -43,6 +58,25 @@ class MasterRoom extends StatelessWidget {
       floatingActionButton: masterRoomButton(context),
       bottomNavigationBar: const BottomNavBar(),
     );
+  }
+
+  Future<void> getPlayers() async {
+    var url = Uri.parse('${dotenv.env['API_URL']}/table/${widget.roomId}');
+    var response = await http.get(url);
+    if (response.statusCode == 200) {
+      RpgTable rpgTable = RpgTable.fromJson(jsonDecode(response.body));
+      roomToPlayerTile(rpgTable.rooms);
+    } else {
+      throw Exception("a");
+    }
+  }
+
+  void roomToPlayerTile(List<Room>? rooms) {
+    setState(() {
+      for (var room in rooms!) {
+        players.add(PlayerTile(room.sheetName, room.sheetId, room.userId));
+      }
+    });
   }
 
   FloatingActionButton masterRoomButton(BuildContext context) {
@@ -74,7 +108,7 @@ class MasterRoom extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 QrImageView(
-                  data: roomId.toString(), //qr code info
+                  data: widget.roomId.toString(), //qr code info
                   version: QrVersions.auto,
                   size: 200.0,
                 ),

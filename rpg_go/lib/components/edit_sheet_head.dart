@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rpg_go/models/Sheet.dart';
 
 class EditSheetHead extends StatelessWidget {
-  final controllerName;
-  final controllerClass;
-  final controllerRace;
-  final controllerLevel;
-  EditSheetHead({super.key, required this.controllerName ,required this.controllerClass,required this.controllerRace,required this.controllerLevel});
-
+  final Sheet sheet;
+  const EditSheetHead(this.sheet, {super.key});
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controllerName = TextEditingController();
+    final TextEditingController controllerClass = TextEditingController();
+    final TextEditingController controllerRace = TextEditingController();
+    final TextEditingController controllerLevel = TextEditingController();
+    controllerName.text = sheet.name;
+    controllerClass.text = sheet.playerClass;
+    controllerRace.text = sheet.race;
+    controllerLevel.text = sheet.level.toString();
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -46,6 +49,9 @@ class EditSheetHead extends StatelessWidget {
                   filled: true,
                 ),
                 cursorColor: Colors.black,
+                onChanged: (value) {
+                  sheet.name = value;
+                },
               ),
             ),
             const SizedBox(height: 5),
@@ -68,6 +74,9 @@ class EditSheetHead extends StatelessWidget {
                   filled: true,
                 ),
                 cursorColor: Colors.black,
+                onChanged: (value) {
+                  sheet.playerClass = value;
+                }
               ),
             ),
             const SizedBox(height: 5),
@@ -90,6 +99,9 @@ class EditSheetHead extends StatelessWidget {
                   filled: true,
                 ),
                 cursorColor: Colors.black,
+                onChanged: (value) {
+                  sheet.race = value;
+                }
               ),
             ),
             
@@ -125,6 +137,9 @@ class EditSheetHead extends StatelessWidget {
                   filled: true,
                 ),
                 cursorColor: Colors.black,
+                onChanged: (value) {
+                  sheet.level = int.parse(value != '' ? value : '0');
+                },
               ),
             ),
             ],

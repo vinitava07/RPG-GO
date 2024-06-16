@@ -32,7 +32,7 @@ class PlayerTileAdd extends StatelessWidget {
             int sId = sheetId;
             // ou qualquer outra lógica para calcular sheetId
             return SheetPage(
-                sheetId: sId, bt: ButtonType.addSheet, tableId: tableId);
+                sheetId: sId, userId: globals.loggedUser.id, bt: ButtonType.addSheet, tableId: tableId);
           }));
         },
         contentPadding: const EdgeInsets.all(30),

@@ -18,15 +18,33 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import '../models/globals.dart' as globals;
 
-class EditSheetPage extends StatelessWidget {
-  bool isEditing;
-  final _controllerName = TextEditingController();
-  final _controllerClass = TextEditingController();
-  final _controllerRace = TextEditingController();
-  final _controllerLevel = TextEditingController();
+class EditSheetPage extends StatefulWidget {
+  final bool isEditing;
+  final Sheet? sheet;
+  final int userId;
   // final _controllerSpells = TextEditingController();
 
-  EditSheetPage(bool edit, {super.key}) : isEditing = edit;
+  const EditSheetPage(this.isEditing, this.userId, {this.sheet, super.key});
+
+  @override
+  State<EditSheetPage> createState() => _EditSheetPageState();
+}
+
+class _EditSheetPageState extends State<EditSheetPage> {
+  bool loading = false;
+
+  late final Sheet sheet;
+
+  @override
+  void initState() {
+    super.initState();
+    if(widget.sheet != null) {
+      sheet = widget.sheet!;
+    } else {
+      sheet = Sheet(id: -1, name: '', playerClass: '', race: '', level: 0, spells: '');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,11 +70,7 @@ class EditSheetPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: EditSheetHead(
-                    controllerName: _controllerName,
-                    controllerClass: _controllerClass,
-                    controllerLevel: _controllerLevel,
-                    controllerRace: _controllerRace),
+                child: EditSheetHead(sheet),
               ),
               const SizedBox(height: 20),
               Container(
@@ -119,27 +133,31 @@ class EditSheetPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 25, top: 3),
                     child: ElevatedButton(
-                        onPressed: () async {
-                          if (isEditing) {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              final sId =
-                                  0; // ou qualquer outra lógica para calcular sheetId
-                              return SheetPage(
-                                sheetId: sId,
-                                bt: ButtonType.editSheet,
-                              );
-                            }));
-                            //updateSheet();
+                        onPressed: () {
+                          if (widget.isEditing) {
+                            setState(() {
+                              loading = true;
+                            });
+
+                            updateSheet(widget.userId).then((value) {
+                              if (value) {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                  return SheetPage(
+                                    sheetId: sheet.id,
+                                    userId: widget.userId,
+                                    bt: ButtonType.editSheet,
+                                  );
+                                }));
+                              }
+                            });
                           } else {
-                            createSheet();
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
+                            createSheet(sheet);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
                               return const Profile();
                             }));
                           }
                         },
-                        child: const Text('SAVE')),
+                        child: loading ? const CircularProgressIndicator() :const Text('SAVE')),
                   )
                 ],
               )
@@ -148,7 +166,7 @@ class EditSheetPage extends StatelessWidget {
         )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatMasterButton(),
+      floatingActionButton: const FloatMasterButton(),
       bottomNavigationBar: const SizedBox(
         width: 50,
         child: BottomNavBar(),
@@ -156,20 +174,33 @@ class EditSheetPage extends StatelessWidget {
     );
   }
 
-  Future<bool> createSheet() async {
-    final response = await http.post(
-      Uri.parse(
-          "${dotenv.env['API_URL']!}sheet?user_id=${globals.loggedUser.id}"),
+  Future<bool> updateSheet(int userId) async {
+    final body = {
+      "id": sheet.id,
+      "name": sheet.name,
+      "playerClass": sheet.playerClass,
+      "race": sheet.race,
+      "playerLevel": sheet.level,
+      "spells": "Magias do Jogador"
+    };
+
+    final response = await http.put(
+      Uri.parse("${dotenv.env['API_URL']!}sheet?user_id=$userId"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode({
-        'name': _controllerName.text,
-        'playerClass': _controllerClass.text,
-        'race': _controllerRace.text,
-        'playerLevel': int.parse(_controllerLevel.text),
-        'spells': 'Magias do Jogador'
-      }),
+      body: jsonEncode(body),
+    );
+    return response.statusCode == 201;
+  }
+
+  Future<bool> createSheet(Sheet sheet) async {
+    final response = await http.post(
+      Uri.parse("${dotenv.env['API_URL']!}sheet?user_id=${globals.loggedUser.id}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({'name': sheet.name, 'playerClass': sheet.playerClass, 'race': sheet.race, 'playerLevel': sheet.level, 'spells': 'Magias do Jogador'}),
     );
 
     if (response.statusCode == 201) {

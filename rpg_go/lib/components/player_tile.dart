@@ -5,9 +5,8 @@ import 'package:rpg_go/pages/sheet_page.dart';
 class PlayerTile extends StatelessWidget {
   final String playerName;
   final int sheetId;
-  const PlayerTile(String name, int id, {super.key})
-      : playerName = name,
-        sheetId = id;
+  final int userId;
+  const PlayerTile(this.playerName, this.sheetId, this.userId, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +25,13 @@ class PlayerTile extends StatelessWidget {
         ),
         dense: false,
         onTap: () {
+
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             final int sId =
                 sheetId; // ou qualquer outra lógica para calcular sheetId
             return SheetPage(
               sheetId: sId,
+              userId: userId,
               bt: ButtonType.editSheet,
             );
           }));
@@ -41,7 +42,7 @@ class PlayerTile extends StatelessWidget {
               backgroundColor: const Color.fromARGB(228, 4, 53, 56)),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => EditSheetPage(true)));
+                MaterialPageRoute(builder: (context) => EditSheetPage(true, userId)));
           },
           child: const Icon(
             Icons.edit,
