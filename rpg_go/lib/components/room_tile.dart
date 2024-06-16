@@ -44,6 +44,7 @@ class _RoomTileState extends State<RoomTile> {
             final int sId = globals.loggedUser.sheets![indexPos].id;
             return SheetPage(
               sheetId: sId,
+              userId: globals.loggedUser.id,
               bt: ButtonType.editSheet,
             );
           }));

@@ -1,13 +1,12 @@
 class Sheet {
   final int id;
-  final String name;
-  final String playerClass;
-  final String race;
-  final int level;
+  String name;
+  String playerClass;
+  String race;
+  int level;
   final String spells;
 
-
-  const Sheet({
+  Sheet({
     required this.id,
     required this.name,
     required this.playerClass,

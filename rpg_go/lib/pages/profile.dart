@@ -50,20 +50,18 @@ class _ProfileState extends State<Profile> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Olá, ${globals.loggedUser.name}!",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontFamily: 'Revol'),
-                              ),
-                              const SizedBox(
-                                width: 15,
+                              ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 100),
+                                child: Text(
+                                  "Olá, ${globals.loggedUser.name}!",
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 30,
+                                      fontFamily: 'Revol'),
+                                  overflow: TextOverflow.fade,
+                                ),
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
@@ -97,14 +95,12 @@ class _ProfileState extends State<Profile> {
                       margin: const EdgeInsets.only(
                           top: 100, bottom: 50, left: 10, right: 10),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           NewSheetButton(
                               text: "Nova Ficha",
                               symbol: Icons.add,
                               color: const Color.fromARGB(227, 4, 163, 102)),
-                          const SizedBox(
-                            width: 100,
-                          ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor:
@@ -153,10 +149,8 @@ class _ProfileState extends State<Profile> {
   }
 
   void sheetToTile() {
-    int index = 0;
-    for (var sheet in globals.loggedUser!.sheets!) {
-      sheetList?.add(PlayerTile(sheet.name, index));
-      index++;
+    for (var sheet in globals.loggedUser.sheets!) {
+      sheetList?.add(PlayerTile(sheet.name, sheet.id, globals.loggedUser.id));
     }
   }
 
@@ -191,7 +185,7 @@ class NewSheetButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(backgroundColor: color),
       onPressed: () async {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => EditSheetPage(false)));
+            MaterialPageRoute(builder: (context) => EditSheetPage(false, globals.loggedUser.id)));
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

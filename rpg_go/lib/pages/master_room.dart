@@ -74,8 +74,7 @@ class _MasterRoomState extends State<MasterRoom> {
   void roomToPlayerTile(List<Room>? rooms) {
     setState(() {
       for (var room in rooms!) {
-        print(room.sheetName);
-        players.add(PlayerTile(room.sheetName, room.sheetId, ));
+        players.add(PlayerTile(room.sheetName, room.sheetId, room.userId));
       }
     });
   }

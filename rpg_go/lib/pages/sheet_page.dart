@@ -20,29 +20,57 @@ enum ButtonType {
   editSheet;
 }
 
-class SheetPage extends StatelessWidget {
+class SheetPage extends StatefulWidget {
   final int sheetId;
   final ButtonType bt;
   final int? tableId;
+  final int userId;
 
   const SheetPage(
-      {super.key, required this.sheetId, required this.bt, this.tableId});
+      {super.key, required this.sheetId, required this.bt, this.tableId, required this.userId});
+
+  @override
+  State<SheetPage> createState() => _SheetPageState();
+}
+
+class _SheetPageState extends State<SheetPage> {
+
+  bool isLoading = true;
+  late final Sheet sheet;
+
+  @override
+  void initState() {
+    super.initState();
+    getSheet();
+  }
+
+  void getSheet() async {
+    print(widget.sheetId);
+    final response = await http.get(
+      Uri.parse(
+          "${dotenv.env['API_URL']!}sheet/${widget.sheetId}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      sheet = Sheet.fromJson(jsonDecode(response.body));
+      setState(() {
+        isLoading = false;
+      });
+    } else {
+      throw Exception('Requisition Failed - GET SHEET.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    int sheetIndex = 0;
-    for (Sheet sheet in globals.loggedUser.sheets!) {
-      if (sheet.id == sheetId) {
-        break;
-      }
-      sheetIndex++;
-    }
     return Scaffold(
       backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Center(
-          child: (Column(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: isLoading ? const CircularProgressIndicator() :Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
@@ -60,7 +88,7 @@ class SheetPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: SheetHead(sheetIndex),
+                child: SheetHead(sheet),
               ),
               const SizedBox(height: 20),
               Container(
@@ -122,14 +150,14 @@ class SheetPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 25, top: 3),
-                    child: bt == ButtonType.editSheet
+                    child: widget.bt == ButtonType.editSheet
                         ? ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          EditSheetPage(true)));
+                                          EditSheetPage(true, widget.userId, sheet: sheet)));
                             },
                             child: const Text('EDIT'))
                         : ElevatedButton(
@@ -148,11 +176,12 @@ class SheetPage extends StatelessWidget {
                 ],
               )
             ],
-          )),
-        )),
+          ),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatMasterButton(),
+      floatingActionButton: const FloatMasterButton(),
       bottomNavigationBar: const SizedBox(
         width: 50,
         child: BottomNavBar(),
@@ -163,7 +192,7 @@ class SheetPage extends StatelessWidget {
   Future<bool> createRoom() async {
     final response = await http.post(
       Uri.parse(
-          "${dotenv.env['API_URL']!}room?table_id=$tableId&user_id=${globals.loggedUser.id}&sheet_id=$sheetId"),
+          "${dotenv.env['API_URL']!}room?table_id=${widget.tableId}&user_id=${globals.loggedUser.id}&sheet_id=${widget.sheetId}"),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
