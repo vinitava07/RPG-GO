@@ -49,18 +49,25 @@ class _ProfileState extends State<Profile> {
                             color: Color.fromRGBO(0, 0, 0, 1),
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(maxWidth: 140),
-                                child: Text(
-                                  "Olá, ${globals.loggedUser.name}!",
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 30,
-                                      fontFamily: 'Revol'),
-                                  overflow: TextOverflow.fade,
+                              Expanded(
+                                child: Center(
+                                  child: ConstrainedBox(
+                                    constraints: const BoxConstraints(maxWidth: 200),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Text(
+                                        "Olá, ${globals.loggedUser.name}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                            fontFamily: 'Revol'),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                               ElevatedButton(
