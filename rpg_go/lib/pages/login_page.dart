@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rpg_go/components/text_field.dart';
 import 'package:rpg_go/models/sqlite_model.dart';
 import 'package:rpg_go/pages/home_revival.dart';
+import 'package:rpg_go/pages/loading_page.dart';
 import 'package:rpg_go/pages/sign_up.dart';
 import 'package:rpg_go/models/User.dart';
 import 'package:http/http.dart' as http;
@@ -168,6 +169,22 @@ class LoginPage extends StatelessWidget {
     }
   }
 }
+
+//class Loading extends StatefulWidget{
+  //@override
+  //_isLoadingState createState() => _isLoadingState();
+//}
+
+// class _isLoadingState extends State<Loading>{
+//   bool isLoading = false;
+
+//   @override
+//   Widget build(BuildContext context) => isLoading
+//     ? LoadingPage()
+//     : const Scaffold(
+//       body: Center(child: const Text("YO"),),
+//     );
+// }
 
 class MyPasswordField extends StatefulWidget {
   final TextEditingController controller;
