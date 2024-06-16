@@ -12,10 +12,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/models/globals.dart' as globals;
 import 'package:sqflite/sqflite.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({
-    super.key,
-  });
+class LoginPage extends StatefulWidget{
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool isLoading = false;
   User? user;
   final _controllerName = TextEditingController();
   final _controllerPassword = TextEditingController();
@@ -24,10 +26,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
-        body: SingleChildScrollView(
-          child: SafeArea(
-              child: Center(
-            child: (Column(
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: isLoading ? LoadingPage() :(Column(
               children: [
                 const SizedBox(height: 50),
                 Container(
@@ -95,6 +97,7 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 75, top: 3),
                       child: ElevatedButton(
                           onPressed: () async {
+                            setState(() => isLoading = true);
                             if (await loginUser(_controllerName.text,
                                 _controllerPassword.text)) {
                               Navigator.push(
@@ -122,6 +125,7 @@ class LoginPage extends StatelessWidget {
                                 },
                               );
                             }
+                            setState(() => isLoading = false);
                           },
                           child: const Text('Login',
                               style: TextStyle(color: Colors.black))),
@@ -130,7 +134,8 @@ class LoginPage extends StatelessWidget {
                 )
               ],
             )),
-          )),
+            ),
+          ),
         ));
   }
 
@@ -169,22 +174,6 @@ class LoginPage extends StatelessWidget {
     }
   }
 }
-
-//class Loading extends StatefulWidget{
-  //@override
-  //_isLoadingState createState() => _isLoadingState();
-//}
-
-// class _isLoadingState extends State<Loading>{
-//   bool isLoading = false;
-
-//   @override
-//   Widget build(BuildContext context) => isLoading
-//     ? LoadingPage()
-//     : const Scaffold(
-//       body: Center(child: const Text("YO"),),
-//     );
-// }
 
 class MyPasswordField extends StatefulWidget {
   final TextEditingController controller;

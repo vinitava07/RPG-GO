@@ -21,7 +21,7 @@ class _HomeRevivalState extends State<HomeRevival> {
   Widget build(BuildContext context) {
     roomList = [];
     roomToTile();
-    return isLoading ? LoadingPage() : Scaffold(
+    return Scaffold(
       backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
       body: SafeArea(
         child: Center(
