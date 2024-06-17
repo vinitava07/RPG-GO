@@ -49,47 +49,38 @@ class _ProfileState extends State<Profile> {
                             color: Color.fromRGBO(0, 0, 0, 1),
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween ,
                             children: [
-                              Expanded(
-                                child: Center(
-                                  child: ConstrainedBox(
-                                    constraints: const BoxConstraints(maxWidth: 200),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Text(
-                                        "Olá, ${globals.loggedUser.name}",
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 25,
-                                            fontFamily: 'Revol'),
-                                      ),
+                              Center(
+                                child: ConstrainedBox(
+                                  constraints: const BoxConstraints(maxWidth: 200),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Text(
+                                      "Olá, ${globals.loggedUser.name}",
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25,
+                                          fontFamily: 'Revol'),
                                     ),
                                   ),
                                 ),
                               ),
-                              ElevatedButton(
+                              IconButton(
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                        const Color.fromARGB(228, 4, 53, 56)),
+                                        Colors.red,),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const ProfileSettings()));
-                                },
-                                onLongPress: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
                                               LoginPage()));
                                 },
-                                child: const Icon(
-                                  Icons.settings,
+                                icon: const Icon(
+                                  Icons.exit_to_app,
                                   color: Colors.white,
                                 ),
                               ),

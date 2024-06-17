@@ -19,7 +19,7 @@ class SheetStats extends StatelessWidget {
             SizedBox(
               width: 80,
               child: Text(
-                "Class Armor",
+                "CA",
                 style: GoogleFonts.almendra(
                   textStyle: const TextStyle(fontSize: 17, color: Colors.white),
                 ),
@@ -56,7 +56,7 @@ class SheetStats extends StatelessWidget {
               child: Text(
                 sheet.armorClass.toString(),
                 style: GoogleFonts.openSans(
-                  textStyle: const TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.w700),
+                  textStyle: const TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.w700),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -66,7 +66,7 @@ class SheetStats extends StatelessWidget {
               child: Text(
                 sheet.movement.toString(),
                 style: GoogleFonts.openSans(
-                  textStyle: const TextStyle(fontSize: 40, color: Colors.white, fontWeight: FontWeight.w700),
+                  textStyle: const TextStyle(fontSize: 35, color: Colors.white, fontWeight: FontWeight.w700),
                 ),
                 textAlign: TextAlign.center,
               ),
