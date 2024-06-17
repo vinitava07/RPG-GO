@@ -18,7 +18,7 @@ class SheetOptions extends StatelessWidget {
           builder: (context, scrollController) {
             return Container(
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: Colors.black,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Column(
@@ -37,6 +37,7 @@ class SheetOptions extends StatelessWidget {
                     title,
                     style: GoogleFonts.almendra(
                       textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      color: Colors.white,
                     ),
                   ),
                   const Divider(),
@@ -50,6 +51,7 @@ class SheetOptions extends StatelessWidget {
                             items[index],
                             style: GoogleFonts.almendra(
                               textStyle: const TextStyle(fontSize: 16),
+                              color: Colors.white,
                             ),
                           ),
                         );

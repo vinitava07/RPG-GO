@@ -6,24 +6,28 @@ class SheetAttributes extends StatelessWidget {
   final Sheet sheet;
   const SheetAttributes(this.sheet, {super.key});
 
+  int _calculateModifier(int abilityScore) {
+    return ((abilityScore - 10) / 2).floor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildAttributeColumn([
-          Attribute(name: "STR", value: sheet.strength.toString()),
-          Attribute(name: "DEX", value: sheet.dexterity.toString())
+          Attribute(name: "STR", value: sheet.strength),
+          Attribute(name: "DEX", value: sheet.dexterity)
         ]),
         const SizedBox(width: 30),
         _buildAttributeColumn([
-          Attribute(name: "CON", value: sheet.constitution.toString()),
-          Attribute(name: "INT", value: sheet.intelligence.toString())
+          Attribute(name: "CON", value: sheet.constitution),
+          Attribute(name: "INT", value: sheet.intelligence)
         ]),
         const SizedBox(width: 30),
         _buildAttributeColumn([
-          Attribute(name: "WIS", value: sheet.wisdom.toString()),
-          Attribute(name: "CHA", value: sheet.charisma.toString())
+          Attribute(name: "WIS", value: sheet.wisdom),
+          Attribute(name: "CHA", value: sheet.charisma)
         ]),
       ],
     );
@@ -33,35 +37,39 @@ class SheetAttributes extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: attributes
-          .map((attribute) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Container(
-                  width: 80,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: const Color.fromRGBO(35, 37, 38, 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        attribute.name,
-                        style: GoogleFonts.almendra(
-                            textStyle: const TextStyle(
-                                fontSize: 17, color: Colors.white)),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        attribute.value,
-                        style: GoogleFonts.almendra(
-                            textStyle: const TextStyle(
-                                fontSize: 25, color: Colors.white, height: 1)),
-                      ),
-                    ],
-                  ),
+          .map((attribute) {
+            int modifier = _calculateModifier(attribute.value);
+            String modifierText = (modifier >= 0) ? "+$modifier" : "$modifier";
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Container(
+                width: 80,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: const Color.fromRGBO(35, 37, 38, 1),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ))
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      attribute.name,
+                      style: GoogleFonts.almendra(
+                          textStyle: const TextStyle(
+                              fontSize: 17, color: Colors.white)),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${attribute.value} ($modifierText)',
+                      style: GoogleFonts.almendra(
+                          textStyle: const TextStyle(
+                              fontSize: 20, color: Colors.white, height: 1)),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          })
           .toList(),
     );
   }
@@ -69,7 +77,7 @@ class SheetAttributes extends StatelessWidget {
 
 class Attribute {
   final String name;
-  final String value;
+  final int value;
 
   Attribute({required this.name, required this.value});
 }
