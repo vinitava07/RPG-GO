@@ -42,7 +42,7 @@ class PlayerTile extends StatelessWidget {
               backgroundColor: const Color.fromARGB(228, 4, 53, 56)),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => EditSheetPage(true, userId)));
+                MaterialPageRoute(builder: (context) => EditSheetPage(true, userId, sheetId: sheetId)));
           },
           child: const Icon(
             Icons.edit,
