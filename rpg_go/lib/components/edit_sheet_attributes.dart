@@ -41,31 +41,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerStr,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.strength = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerStr,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.strength = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
@@ -84,31 +89,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerInt,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99(+9)', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.intelligence = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerInt,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.intelligence = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
@@ -133,31 +143,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerDex,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99(+9)', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.dexterity = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerDex,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.dexterity = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
@@ -176,31 +191,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerWis,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99(+9)', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.wisdom = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerWis,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.wisdom = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
@@ -225,31 +245,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerCon,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99(+9)', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.constitution = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerCon,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.constitution = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
@@ -268,31 +293,36 @@ class EditSheetAttributes extends StatelessWidget {
                 style: GoogleFonts.almendra(
                     textStyle:
                         const TextStyle(fontSize: 17, color: Colors.white))),
-                SizedBox(
-                  width: 70,
-                  height: 35,
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    controller: controllerCha,
-                    decoration: const InputDecoration(
-                      hintText:
-                          '99', //se usuario existente, aparece o nome atual
-                      hintStyle: TextStyle(fontFamily: "Revol"),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white38),
-                      ),
-                      fillColor: Colors.white,
-                      filled: true,
+                  Container(
+                    width: 70,
+                    height: 35,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                     ),
-                    cursorColor: Colors.black,
-                    onChanged: (value) {
-                      sheet.charisma = int.parse(value != '' ? value : '0');
-                    },
+                    child: Center(
+                      child: TextField(
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w700),
+                        ),
+                        controller: controllerCha,
+                        textAlign: TextAlign.center,
+                        decoration:  const InputDecoration(
+                          hintText: '100',
+                          enabledBorder:
+                          OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white,),
+                          ),
+                          filled: false,
+                          isCollapsed: true,
+                        ),
+                        onChanged: (value) {
+                          sheet.charisma = int.parse(value != '' ? value : '0');
+                        },
+                      ),
+                    ),
                   ),
-                ),
                 ],
               ),
             ),

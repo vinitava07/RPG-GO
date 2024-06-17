@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class RoomHeader extends StatefulWidget {
   final String nomeHeader;
-  const RoomHeader(String nome, {super.key}) : nomeHeader = nome;
+  final double fontSize;
+  final double padding;
+  const RoomHeader(String nome, {this.fontSize = 50, this.padding = 20, super.key}) : nomeHeader = nome;
 
   @override
   State<RoomHeader> createState() => _RoomHeaderState();
@@ -14,11 +16,11 @@ class _RoomHeaderState extends State<RoomHeader> {
     return Container(
       width: 500,
       color: Colors.black,
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(widget.padding),
       child: Text(
         widget.nomeHeader,
-        style: const TextStyle(
-          fontSize: 50,
+        style: TextStyle(
+          fontSize: widget.fontSize,
           fontFamily: 'Revol',
           color: Colors.white,
         ),

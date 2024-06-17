@@ -61,9 +61,9 @@ class SheetAttributes extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       '${attribute.value} ($modifierText)',
-                      style: GoogleFonts.almendra(
-                          textStyle: const TextStyle(
-                              fontSize: 20, color: Colors.white, height: 1)),
+                        style: GoogleFonts.openSans(
+                          textStyle: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
+                        ),
                     ),
                   ],
                 ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:rpg_go/components/bottom_nav_bar.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
+import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/components/sheet_head.dart';
 import 'package:rpg_go/components/sheet_stats.dart';
 import 'package:rpg_go/components/sheet_attributes.dart';
@@ -72,6 +73,8 @@ class _SheetPageState extends State<SheetPage> {
             child: isLoading ? const CircularProgressIndicator() :Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const RoomHeader('Personagem', fontSize: 35, padding: 15,),
+              const SizedBox(height: 10),
               Container(
                 width: 370,
                 height: 120,

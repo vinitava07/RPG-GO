@@ -7,6 +7,7 @@ import 'package:rpg_go/components/edit_sheet_head.dart';
 import 'package:rpg_go/components/edit_sheet_options.dart';
 import 'package:rpg_go/components/edit_sheet_stats.dart';
 import 'package:rpg_go/components/floating_menu_buttons.dart';
+import 'package:rpg_go/components/room_header.dart';
 import 'package:rpg_go/pages/profile.dart';
 // import 'package:rpg_go/components/sheet_head.dart';
 // import 'package:rpg_go/components/sheet_stats.dart';
@@ -79,6 +80,8 @@ class _EditSheetPageState extends State<EditSheetPage> {
             child: loading ? const CircularProgressIndicator() :(Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const RoomHeader('Editar Ficha', fontSize: 35, padding: 15,),
+              const SizedBox(height: 10),
               Container(
                 width: 370,
                 height: 120,
