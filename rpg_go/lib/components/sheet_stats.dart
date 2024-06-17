@@ -22,6 +22,7 @@ class SheetStats extends StatelessWidget {
 
   Widget _buildStatColumn(String title, String value, double height) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           title,
@@ -42,6 +43,7 @@ class SheetStats extends StatelessWidget {
   Widget _buildHPColumn() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(height: 10),
         Text(

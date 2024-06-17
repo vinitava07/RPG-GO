@@ -22,26 +22,50 @@ class EditSheetPage extends StatefulWidget {
   final bool isEditing;
   final Sheet? sheet;
   final int userId;
+  final int? sheetId;
   // final _controllerSpells = TextEditingController();
 
-  const EditSheetPage(this.isEditing, this.userId, {this.sheet, super.key});
+  const EditSheetPage(this.isEditing, this.userId, {this.sheet, super.key, this.sheetId});
 
   @override
   State<EditSheetPage> createState() => _EditSheetPageState();
 }
 
 class _EditSheetPageState extends State<EditSheetPage> {
-  bool loading = false;
+  bool loading = true;
 
   late final Sheet sheet;
 
   @override
   void initState() {
     super.initState();
-    if(widget.sheet != null) {
-      sheet = widget.sheet!;
-    } else {
+    if(!widget.isEditing) {
       sheet = Sheet(id: -1, name: '', playerClass: '', race: '', level: 0, spells: '');
+      loading = false;
+    } else if(widget.sheet != null){
+      sheet = widget.sheet!;
+      loading = false;
+    } else {
+      assert(widget.sheetId != null, 'Sheet ID is null');
+      getSheet();
+    }
+  }
+
+  void getSheet() async {
+    final response = await http.get(
+      Uri.parse(
+          "${dotenv.env['API_URL']!}sheet/${widget.sheetId}"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      sheet = Sheet.fromJson(jsonDecode(response.body));
+      setState(() {
+        loading = false;
+      });
+    } else {
+      throw Exception('Requisition Failed - GET SHEET.');
     }
   }
 
@@ -49,10 +73,10 @@ class _EditSheetPageState extends State<EditSheetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(35, 37, 38, 1),
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Center(
-          child: (Column(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: loading ? const CircularProgressIndicator() :(Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
@@ -163,7 +187,8 @@ class _EditSheetPageState extends State<EditSheetPage> {
               )
             ],
           )),
-        )),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const FloatMasterButton(),
