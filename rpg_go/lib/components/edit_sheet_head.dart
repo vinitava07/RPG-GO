@@ -78,7 +78,7 @@ class EditSheetHead extends StatelessWidget {
                       controller: controllerClass,
                       textAlign: TextAlign.center,
                       decoration:  const InputDecoration(
-                        hintText: 'Nome',
+                        hintText: 'Classe',
                         enabledBorder:
                         OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
                         focusedBorder: OutlineInputBorder(
@@ -108,7 +108,7 @@ class EditSheetHead extends StatelessWidget {
                       controller: controllerRace,
                       textAlign: TextAlign.center,
                       decoration:  const InputDecoration(
-                        hintText: 'Nome',
+                        hintText: 'Raça',
                         enabledBorder:
                         OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
                         focusedBorder: OutlineInputBorder(
@@ -143,7 +143,7 @@ class EditSheetHead extends StatelessWidget {
               controller: controllerLevel,
               textAlign: TextAlign.center,
               decoration:  const InputDecoration(
-                hintText: 'Nome',
+                hintText: 'Level',
                 enabledBorder:
                 OutlineInputBorder(borderSide: BorderSide(color: Colors.white,)),
                 focusedBorder: OutlineInputBorder(
