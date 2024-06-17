@@ -104,17 +104,17 @@ class _MasterRoomState extends State<MasterRoom> {
         return AlertDialog(
           title: const Text('QR Code'),
           content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                QrImageView(
+            child: SizedBox(
+              width: 200,
+              height: 200,
+              child:                 QrImageView(
                   data: widget.roomId.toString(), //qr code info
                   version: QrVersions.auto,
-                  size: 200.0,
+                  // size: 120.0,
                 ),
                 // Text('This is a demo alert dialog.'),
                 // Text('Would you like to approve of this message?'),
-              ],
+              
             ),
           ),
           actions: <Widget>[
