@@ -2,10 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SheetOptions extends StatelessWidget {
+class SheetOptions extends StatefulWidget {
   const SheetOptions({super.key});
 
-  void _showModalBottomSheet(BuildContext context, String title, List<String> items) {
+  @override
+  _SheetOptionsState createState() => _SheetOptionsState();
+}
+
+class _SheetOptionsState extends State<SheetOptions> {
+  final Map<String, List<String>> _items = {
+    'Attack': ['Attack 1', 'Attack 2', 'Attack 3'],
+    'Skills': ['Skill 1', 'Skill 2', 'Skill 3'],
+    'Spells': ['Spell 1', 'Spell 2', 'Spell 3'],
+    'Features': ['Feature 1', 'Feature 2', 'Feature 3'],
+    'Inventory': ['Item 1', 'Item 2', 'Item 3'],
+    'Tools': ['Tool 1', 'Tool 2', 'Tool 3'],
+  };
+
+  void _showModalBottomSheet(BuildContext context, String title) {
+    TextEditingController textController = TextEditingController();
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -44,11 +60,11 @@ class SheetOptions extends StatelessWidget {
                   Expanded(
                     child: ListView.builder(
                       controller: scrollController,
-                      itemCount: items.length,
+                      itemCount: _items[title]!.length,
                       itemBuilder: (context, index) {
                         return ListTile(
                           title: Text(
-                            items[index],
+                            _items[title]![index],
                             style: GoogleFonts.almendra(
                               textStyle: const TextStyle(fontSize: 16),
                               color: Colors.white,
@@ -57,6 +73,40 @@ class SheetOptions extends StatelessWidget {
                         );
                       },
                     ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Add new $title'),
+                            content: TextField(
+                              controller: textController,
+                              decoration:  InputDecoration(hintText: title),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _items[title]!.add(textController.text);
+                                  });
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Add'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: const Text('Add Item'),
                   ),
                 ],
               ),
@@ -78,7 +128,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 45),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Attack', ['Attack 1', 'Attack 2', 'Attack 3']);
+                _showModalBottomSheet(context, 'Attack');
               },
               child: Container(
                 width: 90,
@@ -119,7 +169,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Skills', ['Skill 1', 'Skill 2', 'Skill 3']);
+                _showModalBottomSheet(context, 'Skills');
               },
               child: Container(
                 width: 90,
@@ -166,7 +216,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 45),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Spells', ['Spell 1', 'Spell 2', 'Spell 3']);
+                _showModalBottomSheet(context, 'Spells');
               },
               child: Container(
                 width: 90,
@@ -207,7 +257,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Features', ['Feature 1', 'Feature 2', 'Feature 3']);
+                _showModalBottomSheet(context, 'Features');
               },
               child: Container(
                 width: 90,
@@ -254,7 +304,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 45),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Inventory', ['Item 1', 'Item 2', 'Item 3']);
+                _showModalBottomSheet(context, 'Inventory');
               },
               child: Container(
                 width: 90,
@@ -294,7 +344,7 @@ class SheetOptions extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                _showModalBottomSheet(context, 'Tools', ['Tool 1', 'Tool 2', 'Tool 3']);
+                _showModalBottomSheet(context, 'Tools');
               },
               child: Container(
                 width: 90,
