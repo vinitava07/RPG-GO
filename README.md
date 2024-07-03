@@ -1,5 +1,7 @@
 # RPG: GO
 
+Backend: https://github.com/vinitava07/api-rpg-go
+
 ## Objetivos do App
 
 - Facilitar a criação e visualização de fichas de RPG
